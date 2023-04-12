@@ -1,48 +1,5 @@
 $font-path: "../fonts"
 $svg-path: "../svgs"
-@font-face
-    font-family: 'SF Pro Display'
-    src: url('#{$font-path}/SFProDisplay-Regular.eot')
-    src: url('#{$font-path}/SFProDisplay-Regular.eot?#iefix') format('embedded-opentype'),
-    src: url('#{$font-path}/SFProDisplay-Regular.woff2') format('woff2'),
-    src: url('#{$font-path}/SFProDisplay-Regular.woff') format('woff'),
-    src: url('#{$font-path}/SFProDisplay-Regular.ttf') format('truetype')
-    font-weight: normal
-    font-style: normal
-    font-display: swap
-
-@font-face
-    font-family: 'Inter'
-    src: url('#{$font-path}/Inter-Regular.eot')
-    src: url('#{$font-path}/Inter-Regular.eot?#iefix') format('embedded-opentype'),
-    src: url('#{$font-path}/Inter-Regular.woff2') format('woff2'),
-    src: url('#{$font-path}/Inter-Regular.woff') format('woff'),
-    src: url('#{$font-path}/Inter-Regular.ttf') format('truetype')
-    font-weight: normal
-    font-style: normal
-    font-display: swap
-
-@font-face
-    font-family: 'Inter'
-    src: url('#{$font-path}/Inter-Bold.eot')
-    src: url('#{$font-path}/Inter-Bold.eot?#iefix') format('embedded-opentype'),
-    src: url('#{$font-path}/Inter-Bold.woff2') format('woff2'),
-    src: url('#{$font-path}/Inter-Bold.woff') format('woff'),
-    src: url('#{$font-path}/Inter-Bold.ttf') format('truetype')
-    font-weight: bold
-    font-style: normal
-    font-display: swap
-
-@font-face
-    font-family: 'Inter'
-    src: url('#{$font-path}/Inter-Medium.eot')
-    src: url('#{$font-path}/Inter-Medium.eot?#iefix') format('embedded-opentype'),
-    src: url('#{$font-path}/Inter-Medium.woff2') format('woff2'),
-    src: url('#{$font-path}/Inter-Medium.woff') format('woff'),
-    src: url('#{$font-path}/Inter-Medium.ttf') format('truetype')
-    font-weight: 500
-    font-style: normal
-    font-display: swap
 
 /* 1. Colors */
 $main-gradient: radial-gradient(94.52% 175.41% at 2.18% 5.48%, rgba(84, 24, 158, 0.2) 0%, rgba(0, 0, 0, 0) 100%), linear-gradient(150.65deg, #432F5D -28.37%, #000000 72.49%)
@@ -73,7 +30,7 @@ $black: #000000
 $radio-hover: #CDEDF6
 
 $title-font: 'Inter','Helvetica Neue',Arial,'Noto Sans',sans-serif
-$body-font: 'SF Pro Display','Helvetica Neue',Arial,'Noto Sans',sans-serif
+$body-font: 'Inter','Helvetica Neue',Arial,'Noto Sans',sans-serif
 
 $fontWeight-light: 300
 $fontWeight-regular: 400
@@ -132,7 +89,6 @@ h6
     font-weight: $fontWeight-bold!important
     color: $white
     margin: 0
-  // letter-spacing: $letterSpacing-4
 
 h1:last-child,
 h2:last-child,
@@ -141,36 +97,6 @@ h4:last-child,
 h5:last-child,
 h6:last-child
     margin-bottom: 0!important
-
-h1
-    font-size: $fontSize-h1!important
-    line-height: $lineHeight-h1!important
-@media (max-width: 639px)
-    font-size: 32px!important
-    line-height: 40px!important
-
-h2
-    font-size: $fontSize-h2
-    line-height: $lineHeight-h2
-@media (max-width: 639px)
-    font-size: $fontSize-h4
-    line-height: $lineHeight-h4
-
-h3
-    font-size: $fontSize-h3!important
-    line-height: $lineHeight-h3!important
-
-h4
-    font-size: $fontSize-h4!important
-    line-height: $lineHeight-h4!important
-
-h5
-    font-size: $fontSize-h5!important
-    line-height: $lineHeight-h5!important
-
-h6
-    font-size: $fontSize-h6!important
-    line-height: $lineHeight-h6!important
 
 .paragraph1,
 .paragraph2,
@@ -295,16 +221,16 @@ a.hs-btn
     letter-spacing: $letterSpacing-4
 
 .ant-btn-default
-&:hover, &:focus
-    border-color: $gray-5
-    background: transparent!important
+    &:hover, &:focus
+        border-color: $gray-5
+        background: transparent!important
 
 .ant-btn-primary
     background: $primary
     border-color: $primary
-&:hover, &:focus
-    border-color: $primaryHover
-    background: $primaryHover
+    &:hover, &:focus
+        border-color: $primaryHover
+        background: $primaryHover
 
 // .ant-btn-secondary
 //   background: $secondary
@@ -319,7 +245,6 @@ a.hs-btn
 .ant-btn-default:not(:disabled):hover
     border-color: $primaryHover
     background: $primaryHover
-& >span
 
 .ant-btn-primary:disabled
     border-color: transparent
@@ -332,10 +257,10 @@ a.hs-btn
     background: $primary
     border-color: $primary
     color: $white
-&:hover
-    border-color: $primaryHover
-    background: $primaryHover
-    color: $white
+    &:hover
+        border-color: $primaryHover
+        background: $primaryHover
+        color: $white
 .hs-markdown
 .hljs
     background: $true-gray-800
@@ -345,41 +270,16 @@ a.hs-btn
     color: $primary
 .htjs-tag
     color: $secondary
-h2,
-h3
-    margin: 30px 0
-code
-    font-size: 0.9rem
-    margin: 0px 0 12px 0
-p
-    margin: 20px 0
-img
-    margin: 12px 0 0px 0
-a
-    color: #1677ff
-    &:hover
-        color: #1677ff
-        text-decoration: underline
-ol
-    list-style-type: decimal
-    padding: 2px 0 2px 40px
-ul
-    list-style-type: disc
-    padding: 2px 0 2px 40px
-    // li
-    //   padding: 2px 0 2px 24px
-    // li::marker
-    //   padding: 2px 0 2px 24px
 
 .hs-btn-primary
     text-shadow: none
     box-shadow: none
-& >span
-    font-family: $title-font
-    font-weight: $fontWeight-medium
-    font-size: $fontSize-h5
-    line-height: $lineHeight-h5
-    letter-spacing: $letterSpacing-4
+    & >span
+        font-family: $title-font
+        font-weight: $fontWeight-medium
+        font-size: $fontSize-h5
+        line-height: $lineHeight-h5
+        letter-spacing: $letterSpacing-4
 
 .hs-btn-primary-big
     display: flex
@@ -387,12 +287,12 @@ ul
     justify-content: center
     align-items: center
     box-shadow: none
-& >span
-    font-family: $title-font
-    font-weight: $fontWeight-medium
-    font-size: $fontSize-h4
-    line-height: $lineHeight-h5
-    letter-spacing: $letterSpacing-4
+    & >span
+        font-family: $title-font
+        font-weight: $fontWeight-medium
+        font-size: $fontSize-h4
+        line-height: $lineHeight-h5
+        letter-spacing: $letterSpacing-4
 
 .hs-btn-default
     display: flex
@@ -401,18 +301,18 @@ ul
     border-color: $true-gray-700
     background-color: transparent
 
-& .customicon
-    display: inline-flex
-    margin-right: 8px
-    & >svg
-        height: 24px
-        width: 24px
+    & .customicon
+        display: inline-flex
+        margin-right: 8px
+        & >svg
+            height: 24px
+            width: 24px
 
-& >span
-    color: $white
-&:hover
-    background-color: transparent
-    border-color: $primary
+    & >span
+        color: $white
+    &:hover
+        background-color: transparent
+        border-color: $primary
 
 .hs-btn-default-big
     display: flex
@@ -421,71 +321,51 @@ ul
     border-color: $true-gray-700
     background-color: transparent
 
-& .customicon
-    display: inline-flex
-    margin-right: 8px
-    & >svg
-        height: 24px
-        width: 24px
+    & .customicon
+        display: inline-flex
+        margin-right: 8px
+        & >svg
+            height: 24px
+            width: 24px
 
-& >span
-    color: $white
-    font-family: $title-font
-    font-weight: $fontWeight-medium
-    font-size: $fontSize-h4
-    line-height: $lineHeight-h5
-    letter-spacing: $letterSpacing-4
-&:hover
-    background-color: transparent
-    border-color: $primary
+    & >span
+        color: $white
+        font-family: $title-font
+        font-weight: $fontWeight-medium
+        font-size: $fontSize-h4
+        line-height: $lineHeight-h5
+        letter-spacing: $letterSpacing-4
+    &:hover
+        background-color: transparent
+        border-color: $primary
 
 .hs-btn-text
     padding: 0px
     color: $white
     border-color: transparent
-&:hover, &:focus
-    color: $primary
-    background: transparent
-    border-color: transparent !important
-::after
-    border-color: transparent
-
-.hs-btn-text-left
-    display: flex
-    justify-content: start
-    align-items: center
-    padding: 0px
-    color: $white
-    border-color: transparent
-&:hover, &:focus
-    color: $primary
-    background: transparent
-    border-color: transparent !important
-::after
-    border-color: transparent
-& .customicon
-    display: inline-flex
-    margin-right: 8px
-    & >svg
-        height: 24px
-        width: 24px
+    &:hover, &:focus
+        color: $primary
+        background: transparent
+        border-color: transparent !important
+    ::after
+        border-color: transparent
 
 .hs-btn-white
     background-color: $white
-&:hover, &:focus
-    color: $primary
+    &:hover, &:focus
+        color: $primary
+        & >span
+            color: $white
     & >span
-        color: $white
-& >span
-    color: $gray-1
-    // background: transparent
+        color: $gray-1
+        // background: transparent
 
 .ant-affix .hs-header
     background: rgba(0, 0, 0, 0.55)
 // Header
 .hs-header
     background: transparent
-& .hs-nav-center
+    & .hs-nav-center
     & > ul
         background: transparent
         display: flex
@@ -520,117 +400,17 @@ ul
         &:hover::before
             transform: scale(1, 1)
             transform-origin: left center
-          // , & .ant-anchor-link a:hover::before
     & li.ant-menu-item-selected
         & a::before
             transform: scale(1, 1)
             transform-origin: left center
         & .ant-anchor-link a:hover::before
-& .hs-nav-right
-    display: flex!important
-    justify-content: flex-end
-    align-items: center
-& .w-14
-    width: 50px!important
-
-.hs-proposal-card
-    background: rgba(255, 255, 255, 0.05)
-    border: 0px
-& .ant-card-body
-    padding: 16px 20px
-    margin-bottom: 30px
-& .ant-list-item
-    border-bottom: 0px
-    background-color: rgba(255, 255, 255, 0.05)
-    color: #ffffff
-    padding: 16px
-    margin-bottom: 30px
-& .ant-list-item-meta-title a
-    font-weight: 400
-    font-size: 18px
-    line-height: 158%
-    color: #ffffff
-    margin-bottom: 24px
-& .ant-list-item-meta-description
-    color: #ffffff
-& .ant-list-item-action li a
-    color: #ffffff
-    text-align: center
-    display: flex
-    align-items: center
-& .anticon-check-circle
-    margin-right: 8px
-    color: #00d395
-
-& .anticon-close-circle
-    margin-right: 8px
-    color: #c21433
-
-& .card-item div
-    color: #ffffff
-
-& .active-card-item div
-    color: #ffffff
-    margin-left: 40px
-
-& .card-right
-    margin-right: 16px
-    & div
-        display: flex
-        justify-content: center
+    & .hs-nav-right
+        display: flex!important
+        justify-content: flex-end
         align-items: center
-
-& .ant-tag
-    font-size: 10px
-
-& .ant-tag-error
-    background: none
-    border-color: rgba(255, 255, 255, 0.1)
-
-& .ant-tag-success
-    background: none
-    color: #00ffa3
-    border-color: #00ffa3
-
-& .ant-tag-default
-    background: none
-    border-color: rgba(255, 255, 255, 0.05)
-    & .ant-spin
-        padding-left: 8px
-        padding-right: 8px
-
-& .ant-tag-processing
-    background: none
-    color: #00dcff
-    border-color: #00dcff
-
-& .default-loading
-    color: #fff
-    font-size: 14px
-
-&.ring-container
-    position: relative
-
-&.circle
-    width: 15px
-    height: 15px
-    background-color: #00dcff
-    border-radius: 50%
-    position: absolute
-    top: 23px
-    left: 23px
-
-&.ringring
-    border: 3px solid #00dcff
-    border-radius: 30px
-    height: 25px
-    width: 25px
-    position: absolute
-    left: 18px
-    top: 18px
-    animation: pulsate 1s ease-out
-    animation-iteration-count: infinite
-    opacity: 0
+    & .w-14
+        width: 50px!important
 
 @keyframes pulsate
     0%
@@ -647,9 +427,8 @@ ul
 .ant-progress-text
     color: $white !important
 
-.hs-create-proposal
-& .card
-    background: rgba(255, 255, 255, 0.05)
+    & .card
+        background: rgba(255, 255, 255, 0.05)
     & h3
         color: #fff
 
@@ -704,52 +483,51 @@ ul
         margin-top: 16px
 
 .hs-form-item-other
-& .ant-form-item-control-input-content
-    display: flex
-    justify-content: center
-    align-items: center
-& .paragraph2
-    display: inline-block
-    color: $body-light!important
-& button
-    font-family: $title-font
-    font-weight: $fontWeight-medium
-    font-size: $fontSize-h5
-    line-height: $lineHeight-h5
-    letter-spacing: $letterSpacing-4
-    margin-left: -7px
+    & .ant-form-item-control-input-content
+        display: flex
+        justify-content: center
+        align-items: center
+    & .paragraph2
+        display: inline-block
+        color: $body-light!important
+    & button
+        font-family: $title-font
+        font-weight: $fontWeight-medium
+        font-size: $fontSize-h5
+        line-height: $lineHeight-h5
+        letter-spacing: $letterSpacing-4
+        margin-left: -7px
 
 .hs-form-item-pass
     position: relative
-& >.hs-btn-text
-    position: absolute
-    right: -15px
-    top: -6px
-    z-index: 1
+    & >.hs-btn-text
+        position: absolute
+        right: -15px
+        top: -6px
+        z-index: 1
 
 .hs-form-item
     margin-bottom: 0
 
-& .ant-form-item-label > label .ant-form-item-tooltip
-    color: $gray-6
-& .ant-form-item-label > label .ant-form-item-optional
-    color: $gray-6
-& .ant-divider-horizontal.ant-divider-with-text
-    margin: 0
-    color: $gray-6
-    font-weight: 400
-    font-size: 14px
-    border-top-color: $gray-2
-& .ant-divider-inner-text
-    padding: 0 10px
-& .ant-form-item-required
-    flex-direction: row-reverse
-    &::before
-        margin: 0 0 0 3px
-      // color: $secondary!important
-        font-family: $body-font!important
-& .ant-form-item-label > label
-    color: $white
+    & .ant-form-item-label > label .ant-form-item-tooltip
+        color: $gray-6
+    & .ant-form-item-label > label .ant-form-item-optional
+        color: $gray-6
+    & .ant-divider-horizontal.ant-divider-with-text
+        margin: 0
+        color: $gray-6
+        font-weight: 400
+        font-size: 14px
+        border-top-color: $gray-2
+    & .ant-divider-inner-text
+        padding: 0 10px
+    & .ant-form-item-required
+        flex-direction: row-reverse
+        &::before
+            margin: 0 0 0 3px
+            font-family: $body-font!important
+    & .ant-form-item-label > label
+        color: $white
 
 .hs-input
     background: $gray-1
@@ -759,176 +537,176 @@ ul
     border: 1px solid rgba(184, 176, 213, 0.3)
     font-size: $fontSize-body2
     line-height: $lineHeight-body2
-&::placeholder
-    color: $gray-4
-    opacity: 1
-&::-ms-input-placeholder
-    color: $gray-4
-& .ant-input
-    background: $gray-1
-    font-size: $fontSize-body2
-    line-height: $lineHeight-body2
-&.ant-input-affix-wrapper-status-error,
-&.ant-input-affix-wrapper:hover,
-&.ant-input-affix-wrapper:focus,
-&.ant-input-affix-wrapper-focused
+    &::placeholder
+        color: $gray-4
+        opacity: 1
+    &::-ms-input-placeholder
+        color: $gray-4
     & .ant-input
         background: $gray-1
-&:hover,
-&:focus,
-&.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
-&.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):focus,
-&.ant-input-affix-wrapper-focused
-    background: $gray-1
-    border-color: $primary
-    box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
-&.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
-&.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover
-    border-color: $error
-    background: $gray-1
-&.ant-input-status-error:hover
-&.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:focus,
-&.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover
-    box-shadow: none
-&.ant-input-password
-    & .ant-input-suffix svg path
-        fill: $white
-    & .ant-input
-        color: $white
-&.ant-input-disabled
-    border-color: transparent
-    color: $white
-    background: $gray-1
-&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active
-    background-color: red
-    -webkit-text-fill-background-color: yellow !important
-[type="file"]
-    background: $white
-&.ql-editor
-    border: tranparent
-    &.ql-toolbar.ql-snow + .ql-container.ql-snow
-        border: tranparent
-    &.ql-container.ql-snow
-
-.hs-text-area
-    background: $gray-1
-    border-radius: 8px
-    padding: 8px 12px 8px 16px
-    color: $white
-    border: 1px solid rgba(184, 176, 213, 0.3)
-    font-size: $fontSize-body2
-    line-height: $lineHeight-body2
-&::placeholder
-    color: $gray-4
-    opacity: 1
-&::-ms-input-placeholder
-    color: $gray-4
-& .ant-input
-    background: $gray-1
-    font-size: $fontSize-body2
-    line-height: $lineHeight-body2
+        font-size: $fontSize-body2
+        line-height: $lineHeight-body2
     &.ant-input-affix-wrapper-status-error,
     &.ant-input-affix-wrapper:hover,
     &.ant-input-affix-wrapper:focus,
     &.ant-input-affix-wrapper-focused
-    & .ant-input
-        background: $gray-1
-&:hover,
-&:focus,
-&.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
-&.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):focus,
-&.ant-input-affix-wrapper-focused
-    background: $gray-1
-    border-color: $primary
-    box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
-&.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
-&.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover
-    border-color: $error
-    background: $gray-1
-&.ant-input-status-error:hover
-&.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:focus,
-&.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover
-    box-shadow: none
-&.ant-input-password
-    & .ant-input-suffix svg path
-        fill: $white
-    & .ant-input
-        color: $white
-&.ant-input-disabled
-    border-color: transparent
-    color: $white
-    background: $gray-1
-&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active
-    background-color: red
-    -webkit-text-fill-background-color: yellow !important
-
-.hs-select
-    background: $gray-1
-    border-radius: 8px
-    padding: 8px 12px 8px 16px
-    color: $gray-4
-    border: 1px solid rgba(184, 176, 213, 0.3)
-    font-size: $fontSize-body2
-    line-height: $lineHeight-body2
-
-& .ant-select-selector
-    background-color: $gray-1!important
-    color: $gray-4
-    border: transparent!important
-    box-shadow: transparent
-    padding: 0!important
+        & .ant-input
+            background: $gray-1
     &:hover,
     &:focus,
-    &:focus-visible
-        border: $gray-1!important
-        outline-width: 0px
-    & .ant-select-selection-placeholder
-
-        color: $white
-
-&::placeholder
-    color: $gray-4
-    opacity: 1
-&::-ms-input-placeholder
-    color: $gray-4
-& .ant-input
-    background: $gray-1
-    font-size: $fontSize-body2
-    line-height: $lineHeight-body2
-    &.ant-input-affix-wrapper-status-error,
-    &.ant-input-affix-wrapper:hover,
-    &.ant-input-affix-wrapper:focus,
+    &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
+    &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):focus,
     &.ant-input-affix-wrapper-focused
+        background: $gray-1
+        border-color: $primary
+        box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover
+        border-color: $error
+        background: $gray-1
+    &.ant-input-status-error:hover
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:focus,
+    &.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover
+        box-shadow: none
+    &.ant-input-password
+        & .ant-input-suffix svg path
+            fill: $white
+        & .ant-input
+            color: $white
+    &.ant-input-disabled
+        border-color: transparent
+        color: $white
+        background: $gray-1
+    &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active
+        background-color: red
+        -webkit-text-fill-background-color: yellow !important
+    [type="file"]
+        background: $white
+    &.ql-editor
+        border: tranparent
+        &.ql-toolbar.ql-snow + .ql-container.ql-snow
+            border: tranparent
+        &.ql-container.ql-snow
+
+    .hs-text-area
+        background: $gray-1
+        border-radius: 8px
+        padding: 8px 12px 8px 16px
+        color: $white
+        border: 1px solid rgba(184, 176, 213, 0.3)
+        font-size: $fontSize-body2
+        line-height: $lineHeight-body2
+    &::placeholder
+        color: $gray-4
+        opacity: 1
+    &::-ms-input-placeholder
+        color: $gray-4
     & .ant-input
         background: $gray-1
-&:hover,
-&:focus,
-&.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
-&.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):focus,
-&.ant-input-affix-wrapper-focused
-    background: $gray-1
-    border-color: $primary
-    box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
-&.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
-&.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover
-    border-color: $error
-    background: $gray-1
-&.ant-input-status-error:hover
-&.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:focus,
-&.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover
-    box-shadow: none
-&.ant-input-password
-    & .ant-input-suffix svg path
-        fill: $white
-    & .ant-input
+        font-size: $fontSize-body2
+        line-height: $lineHeight-body2
+        &.ant-input-affix-wrapper-status-error,
+        &.ant-input-affix-wrapper:hover,
+        &.ant-input-affix-wrapper:focus,
+        &.ant-input-affix-wrapper-focused
+        & .ant-input
+            background: $gray-1
+    &:hover,
+    &:focus,
+    &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
+    &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):focus,
+    &.ant-input-affix-wrapper-focused
+        background: $gray-1
+        border-color: $primary
+        box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover
+        border-color: $error
+        background: $gray-1
+    &.ant-input-status-error:hover
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:focus,
+    &.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover
+        box-shadow: none
+    &.ant-input-password
+        & .ant-input-suffix svg path
+            fill: $white
+        & .ant-input
+            color: $white
+    &.ant-input-disabled
+        border-color: transparent
         color: $white
-&.ant-input-disabled
-    border-color: transparent
-    color: $white
-    background: $gray-1
-&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active
-    background-color: red
-    -webkit-text-fill-background-color: yellow !important
+        background: $gray-1
+    &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active
+        background-color: red
+        -webkit-text-fill-background-color: yellow !important
+
+    .hs-select
+        background: $gray-1
+        border-radius: 8px
+        padding: 8px 12px 8px 16px
+        color: $gray-4
+        border: 1px solid rgba(184, 176, 213, 0.3)
+        font-size: $fontSize-body2
+        line-height: $lineHeight-body2
+
+    & .ant-select-selector
+        background-color: $gray-1!important
+        color: $gray-4
+        border: transparent!important
+        box-shadow: transparent
+        padding: 0!important
+        &:hover,
+        &:focus,
+        &:focus-visible
+            border: $gray-1!important
+            outline-width: 0px
+        & .ant-select-selection-placeholder
+
+            color: $white
+
+    &::placeholder
+        color: $gray-4
+        opacity: 1
+    &::-ms-input-placeholder
+        color: $gray-4
+    & .ant-input
+        background: $gray-1
+        font-size: $fontSize-body2
+        line-height: $lineHeight-body2
+        &.ant-input-affix-wrapper-status-error,
+        &.ant-input-affix-wrapper:hover,
+        &.ant-input-affix-wrapper:focus,
+        &.ant-input-affix-wrapper-focused
+        & .ant-input
+            background: $gray-1
+    &:hover,
+    &:focus,
+    &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
+    &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):focus,
+    &.ant-input-affix-wrapper-focused
+        background: $gray-1
+        border-color: $primary
+        box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover
+        border-color: $error
+        background: $gray-1
+    &.ant-input-status-error:hover
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:focus,
+    &.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover
+        box-shadow: none
+    &.ant-input-password
+        & .ant-input-suffix svg path
+            fill: $white
+        & .ant-input
+            color: $white
+    &.ant-input-disabled
+        border-color: transparent
+        color: $white
+        background: $gray-1
+    &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active
+        background-color: red
+        -webkit-text-fill-background-color: yellow !important
 
 .hs-editor
 .ql-toolbar.ql-snow
@@ -956,37 +734,36 @@ ul
 
 .hs-alert
     border-radius: 20px
-  // padding: 10px 12px
-&.ant-alert-info
-    background: $true-gray-800
-    border: 1px solid $true-gray-800
-    & svg
-        fill: $error
-& .ant-alert-message
-    color: $white
+    &.ant-alert-info
+        background: $true-gray-800
+        border: 1px solid $true-gray-800
+        & svg
+            fill: $error
+    & .ant-alert-message
+        color: $white
 
-.hs-alert-alert
-    border-radius: 8px
-    padding: 10px 12px
-&.ant-alert-info
-    background-color: #131317
-    border: 1px solid #131317
-    & svg
-        fill: $warning
-& .ant-alert-message
-    color: $white
+    .hs-alert-alert
+        border-radius: 8px
+        padding: 10px 12px
+    &.ant-alert-info
+        background-color: #131317
+        border: 1px solid #131317
+        & svg
+            fill: $warning
+    & .ant-alert-message
+        color: $white
 
 .hs-alert-custom
     border-radius: 8px
     margin-left: auto
     margin-right: auto
-&.ant-alert-info
-    background-color: #131317
-    border: 1px solid #131317
-    & svg
-        fill: $secondary
-& .ant-alert-message
-    color: $white
+    &.ant-alert-info
+        background-color: #131317
+        border: 1px solid #131317
+        & svg
+            fill: $secondary
+    & .ant-alert-message
+        color: $white
 
 .hs-alert-warning
     border-radius: 20px
@@ -995,130 +772,64 @@ ul
     overflow: inherit
     border: 0
     margin-bottom: 32px
-&::before
-    content: ""
-    position: absolute
-    top: -1px
-    right: -1px
-    bottom: -1px
-    left: -1px
-    z-index: -2
-    border-radius: 20px
-& .ant-alert-message
-    color: $white
-&.ant-alert .ant-alert-close-icon .anticon-close
-    color: $white
-    // background: linear-gradient(169deg, #434343 0%, rgba(33, 33, 33, 0) 85.3%)
-  // &::after
-  //   content: ""
-  //   position: absolute
-  //   top: 0
-  //   right: 0
-  //   bottom: 0
-  //   left: 0
-  //   z-index: -1
-  //   border-radius: 19px
-  //   background: $true-gray-800
-  //   backdrop-filter: blur(60px)
+    &::before
+        content: ""
+        position: absolute
+        top: -1px
+        right: -1px
+        bottom: -1px
+        left: -1px
+        z-index: -2
+        border-radius: 20px
+    & .ant-alert-message
+        color: $white
+    &.ant-alert .ant-alert-close-icon .anticon-close
+        color: $white
 
 .hs-modal
-& .ant-modal-content
-    border-radius: 20px
-    // box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.08)
-    padding: 0
-    background: transparent
-    overflow: inherit
-    &::before
-        content: ""
-        position: absolute
-        top: -1px
-        right: -1px
-        bottom: -1px
-        left: -1px
-        z-index: -2
+    & .ant-modal-content
         border-radius: 20px
-      // background: linear-gradient(169deg, #434343 0%, rgba(33, 33, 33, 0) 85.3%)
-    &::after
-        content: ""
-        position: absolute
-        top: 0
-        right: 0
-        bottom: 0
-        left: 0
-        z-index: -1
-        border-radius: 19px
-        background: $true-gray-800
-        backdrop-filter: blur(60px)
-& .ant-modal-body
-    padding: 40px
-    @media (max-width: 768px)
-        padding: 30px
-& .ant-modal-content
-    border-radius: 8px
-& .ant-modal-header
-    border-radius: 8px 8px 0 0
-& .hs-modal-head
-    margin-bottom: 20px
-    & .hs-subscription-type
-        margin-bottom: 4px!important
-        color: $gray-6!important
-& .ant-modal-close-x
-    display: inline-flex
-    align-items: center
-    justify-content: center
-  // & .ant-btn-default span
-  //   color: $white
-
-.hs-modal-certConfirm
-& .ant-modal-content
-    border-radius: 20px
-    // box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.08)
-    padding: 0
-    background: transparent
-    overflow: inherit
-    &::before
-        content: ""
-        position: absolute
-        top: -1px
-        right: -1px
-        bottom: -1px
-        left: -1px
-        z-index: -2
-        border-radius: 20px
-      // background: linear-gradient(169deg, #434343 0%, rgba(33, 33, 33, 0) 85.3%)
-    &::after
-        content: ""
-        position: absolute
-        top: 0
-        right: 0
-        bottom: 0
-        left: 0
-        z-index: -1
-        border-radius: 19px
-        background: rgba(38,38,38)
-        backdrop-filter: blur(60px)
-& .ant-modal-body
-    padding: 40px 40px 0 40px
-    @media (max-width: 768px)
-        padding: 30px 30px 0 30px
-
-& .ant-modal-content
-    border-radius: 8px
-& .ant-modal-header
-    border-radius: 8px 8px 0 0
-& .hs-modal-head
-    margin-bottom: 20px
-    & .hs-subscription-type
-        margin-bottom: 4px!important
-        color: $gray-6!important
-& .ant-modal-close-x
-    display: inline-flex
-    align-items: center
-    justify-content: center
-  // & .ant-btn-default span
-  //   color: $white
-
-.hs-proposal-detail
+        // box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.08)
+        padding: 0
+        background: transparent
+        overflow: inherit
+        &::before
+            content: ""
+            position: absolute
+            top: -1px
+            right: -1px
+            bottom: -1px
+            left: -1px
+            z-index: -2
+            border-radius: 20px
+        &::after
+            content: ""
+            position: absolute
+            top: 0
+            right: 0
+            bottom: 0
+            left: 0
+            z-index: -1
+            border-radius: 19px
+            background: $true-gray-800
+            backdrop-filter: blur(60px)
+    & .ant-modal-body
+        padding: 40px
+        @media (max-width: 768px)
+            padding: 30px
+    & .ant-modal-content
+        border-radius: 8px
+    & .ant-modal-header
+        border-radius: 8px 8px 0 0
+    & .hs-modal-head
+        margin-bottom: 20px
+        & .hs-subscription-type
+            margin-bottom: 4px!important
+            color: $gray-6!important
+    & .ant-modal-close-x
+        display: inline-flex
+        align-items: center
+        justify-content: center
 
 .user
     color: #00ffa3
@@ -1262,39 +973,39 @@ ul
     border-radius: 20px
 
 .hs-tabs
-& .ant-tabs-nav
-    background-color: transparent
-    border-radius: 8px
-    margin: 0 0 28px 0
-    &::before
-        border-bottom: 0
-    & .ant-tabs-nav-wrap
-    & .ant-tabs-nav-list
-        display: flex
-        justify-content: space-between
-        & .ant-tabs-tab
-            width: 100%
-            justify-content: center
-            border: 1px solid transparent
-            border-radius: 40px
-            background: transparent
-            border: 0
-            padding: 10px 16px
-        & .ant-tabs-tab-btn
-            font-family: $title-font
-            font-weight: $fontWeight-medium
-            font-size: $fontSize-body3
-            line-height: $lineHeight-body3
-            letter-spacing: $letterSpacing-4
-            color: #F5F3FC
-        & .ant-tabs-tab + .ant-tabs-tab
-            margin-left: 13px
-        & .ant-tabs-ink-bar
-            height: 100%
-            background: transparent
-            border-radius: 40px
-            border: 1px solid #A292E0
-& .ant-radio-group
+    & .ant-tabs-nav
+        background-color: transparent
+        border-radius: 8px
+        margin: 0 0 28px 0
+        &::before
+            border-bottom: 0
+        & .ant-tabs-nav-wrap
+        & .ant-tabs-nav-list
+            display: flex
+            justify-content: space-between
+            & .ant-tabs-tab
+                width: 100%
+                justify-content: center
+                border: 1px solid transparent
+                border-radius: 40px
+                background: transparent
+                border: 0
+                padding: 10px 16px
+            & .ant-tabs-tab-btn
+                font-family: $title-font
+                font-weight: $fontWeight-medium
+                font-size: $fontSize-body3
+                line-height: $lineHeight-body3
+                letter-spacing: $letterSpacing-4
+                color: #F5F3FC
+            & .ant-tabs-tab + .ant-tabs-tab
+                margin-left: 13px
+            & .ant-tabs-ink-bar
+                height: 100%
+                background: transparent
+                border-radius: 40px
+                border: 1px solid #A292E0
+    & .ant-radio-group
 
 .hs-list-controller
     background: #5639C6
@@ -1303,7 +1014,7 @@ ul
 .hs-segmented, .hs-segmented:hover
     padding: 0
     background-color: transparent!important
-& .ant-segmented-group
+    & .ant-segmented-group
     & .ant-segmented-item, & .ant-segmented-thumb
         width: 100%
         justify-content: center
@@ -1353,7 +1064,7 @@ ul
 
 .hs-descriptions
     margin: 12px 0
-&.ant-descriptions-bordered
+    &.ant-descriptions-bordered
     & .ant-descriptions-view
         border: 0
     & .ant-descriptions-row
@@ -1392,69 +1103,22 @@ ul
   // aspect-ratio: 2
   // border-radius: 24px
 
-.hs-slider-background2
-  // background: #000000
-    object-fit: contain
-    background-image: url('/slider-md.png')
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: center
-    width: 100%
-    aspect-ratio: 2
-@media (max-width: 959px)
-    background-image: url('/slider-sm.png')
-    background-repeat: no-repeat
-    background-size: contain
-    background-position: center
-    width: 100%
-    aspect-ratio: 0.6
-
-.hs-mission-background
-    background: #000000
-    background-repeat: no-repeat
-    background-size: auto
-    background-position: right
-@media (max-width: 639px)
-    background-image: none
-& .hs-mission-inner
-    height: 100%
-    display: flex
-    flex-direction: column
-    text-align: center
-    & > *
-        margin: 20px 0
-
-.hs-member-background
-
-    background-repeat: no-repeat
-    background-size: auto
-    background-position: right
-@media (max-width: 639px)
-    background-image: none
-& .hs-mission-inner
-    height: 100%
-    display: flex
-    flex-direction: column
-    text-align: center
-    & > *
-        margin: 20px 0
-
 .hs-layout
     background: transparent
     background-repeat: no-repeat
     background-size: cover
     min-height: 100vh
     background-position: bottom
-&.main
-    background: transparent
-    background-position: bottom
-    min-height: auto
-& .ant-layout-content
-    // display: flex
-    // justify-content: center
-    // align-items: center
-    &.list
-        display: block
+    &.main
+        background: transparent
+        background-position: bottom
+        min-height: auto
+    & .ant-layout-content
+        // display: flex
+        // justify-content: center
+        // align-items: center
+        &.list
+            display: block
 
 .hs-layout-member
     background: transparent
@@ -1462,16 +1126,16 @@ ul
     background-size: cover
 
     background-position: bottom
-&.main
-    background: transparent
-    background-position: bottom
-    min-height: auto
-& .ant-layout-content
-    // display: flex
-    // justify-content: center
-    // align-items: center
-    &.list
-        display: block
+    &.main
+        background: transparent
+        background-position: bottom
+        min-height: auto
+    & .ant-layout-content
+        // display: flex
+        // justify-content: center
+        // align-items: center
+        &.list
+            display: block
 
 .hs-layout-sider-left
     padding: 4rem 2rem
@@ -1482,220 +1146,189 @@ ul
     bottom: 0
     background-color: transparent
 
-.hs-footer
-  // background: #111111
-& .ant-divider
-    background: rgba(139, 139, 139, 0.2)
-& a
-    position: relative
-    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1)
-    &:before
-        content: ''
-        display: block
-        position: absolute
-        left: 0
-        width: 100%
-        top: 22px
-        height: 1px
-        background: $white
-        transform-origin: right center
-        transform: scale(0, 1)
-        transition: transform .25s cubic-bezier(0.25, 0.8, 0.25, 1)
-    &:hover
-    &::before
-        transform: scale(1, 1)
-        transform-origin: left center
-    & .ant-typography
-        transition: all .25s cubic-bezier(0.25, 0.8, 0.25, 1)
-        color: $white!important
-
 .hs-dropdown
     margin-top: 64px
-& .ant-dropdown-menu
-    border-radius: 8px
-    box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.08)
-    padding: 8px
-    background: $true-gray-800
-    &::before
-        content: ""
-        position: absolute
-        top: -1px
-        right: -1px
-        bottom: -1px
-        left: -1px
-        z-index: -2
-        border-radius: 24px
-      // background: linear-gradient(09deg, #434343 0%, rgba(33, 33, 33, 0) 85.3%)
-    &::after
-        content: ""
-        position: absolute
-        top: 0
-        right: 0
-        bottom: 0
-        left: 0
-        z-index: -1
-        border-radius: 23px
-      // background: rgba(7,7,16,.7)
-      // backdrop-filter: blur(60px)
-    & .ant-divider-horizontal
-        margin: 12px 0
-        border-top: 1px solid rgba(255,255,255,.25)
-    & span.ant-typography
-        color: rgba(255,255,255,.4)!important
-    & .ant-dropdown-menu-item
-        padding: 10px
-        width: 196px
-        line-height: 20px
-        color: $body
-        border-radius: 8px
-        border: 1px solid transparent
-        background: transparent
-    & + .ant-dropdown-menu-item
-        margin-top: 4px
-    &:hover, &.ant-dropdown-menu-item-selected, & .ant-anchor-link a:hover::before
-        background: $true-gray-800-hover
-        border: 1px solid rgba(50,64,84,.3)
-    & .ant-dropdown-menu-title-content, & .ant-anchor-link-title
-        color: $white
-    &.hs-menu-item-user-info
-        padding: 0
-        &:hover
-            background: transparent
-            border: 1px solid transparent
-&.hs-dropdown-menu
     & .ant-dropdown-menu
-        padding: 16px
-&.hs-dropdown-filter
-    width: 300px
+        border-radius: 8px
+        box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.08)
+        padding: 8px
+        background: $true-gray-800
+        &::before
+            content: ""
+            position: absolute
+            top: -1px
+            right: -1px
+            bottom: -1px
+            left: -1px
+            z-index: -2
+            border-radius: 24px
+        &::after
+            content: ""
+            position: absolute
+            top: 0
+            right: 0
+            bottom: 0
+            left: 0
+            z-index: -1
+            border-radius: 23px
+
+        & .ant-divider-horizontal
+            margin: 12px 0
+            border-top: 1px solid rgba(255,255,255,.25)
+        & span.ant-typography
+            color: rgba(255,255,255,.4)!important
+        & .ant-dropdown-menu-item
+            padding: 10px
+            width: 196px
+            line-height: 20px
+            color: $body
+            border-radius: 8px
+            border: 1px solid transparent
+            background: transparent
+        & + .ant-dropdown-menu-item
+            margin-top: 4px
+        &:hover, &.ant-dropdown-menu-item-selected, & .ant-anchor-link a:hover::before
+            background: $true-gray-800-hover
+            border: 1px solid rgba(50,64,84,.3)
+        & .ant-dropdown-menu-title-content, & .ant-anchor-link-title
+            color: $white
+        &.hs-menu-item-user-info
+            padding: 0
+            &:hover
+                background: transparent
+                border: 1px solid transparent
+    &.hs-dropdown-menu
+        & .ant-dropdown-menu
+            padding: 16px
 
 .hs-menu
     border: 0
     background: transparent
     color: $body-light
-&.hs-menu-mobile
-    background: $white
-& .ant-menu-submenu
-    & .ant-menu-submenu-arrow
-        display: none
-    & .ant-menu-sub
-        background: transparent
-    & .ant-menu-submenu-title
-        padding: 0!important
+    &.hs-menu-mobile
+        background: $white
+    & .ant-menu-submenu
+        & .ant-menu-submenu-arrow
+            display: none
+        & .ant-menu-sub
+            background: transparent
+        & .ant-menu-submenu-title
+            padding: 0!important
+            height: 44px
+            line-height: 44px
+            min-width: 220px
+            width: 100%
+            border-radius: 8px
+        & a
+            color: $white
+            font-family: $title-font
+            font-weight: $fontWeight-medium
+            font-size: $fontSize-h5
+            line-height: $lineHeight-h5
+            letter-spacing: $letterSpacing-4
+            display: flex
+            height: 44px
+            align-items: center
+            padding: 0 0 0 16px
+        & svg
+            position: absolute
+            top: 12px
+            right: 12px
+    & .ant-menu-submenu-selected .ant-menu-submenu-title, & .ant-menu-submenu-title:hover
+        background-color: $white
+        border-radius: 8px
+        & a
+            color: $body
+    & .ant-menu-item
         height: 44px
         line-height: 44px
         min-width: 220px
         width: 100%
-        border-radius: 8px
-    & a
-        color: $white
-        font-family: $title-font
-        font-weight: $fontWeight-medium
-        font-size: $fontSize-h5
-        line-height: $lineHeight-h5
-        letter-spacing: $letterSpacing-4
-        display: flex
-        height: 44px
-        align-items: center
-        padding: 0 0 0 16px
-    & svg
-        position: absolute
-        top: 12px
-        right: 12px
-& .ant-menu-submenu-selected .ant-menu-submenu-title, & .ant-menu-submenu-title:hover
-    background-color: $white
-    border-radius: 8px
-    & a
-        color: $body
-& .ant-menu-item
-    height: 44px
-    line-height: 44px
-    min-width: 220px
-    width: 100%
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
-    padding: 0 0 0 16px!important
-    border-radius: 8px
-    & svg
-        position: absolute
-        top: 12px
-        right: 12px
-    & a
-        color: $white
-    &:not(:last-child)
-        margin: 0 0 4px 0
-    & .ant-menu-title-content
-        font-family: $title-font
-        font-weight: $fontWeight-medium
-        font-size: $fontSize-h5
-        line-height: $lineHeight-h5
-        letter-spacing: $letterSpacing-4
-    &.ant-menu-item-selected, &:hover, &.ant-menu-item-active, &:active
-        color: $white
-        background-color: $white
-    & a
-        color: $body
-    &.hs-sub-menu-item
-        height: 32px
-        line-height: 28px
-        padding-left: 20px!important
         transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
-        position: relative
-    & a
-        color: $gray-4
-    &::before
-        position: absolute
-        top: 0
-        right: 0
-        bottom: 0
-        left: 16px
-        background-color: transparent
-        content: '•'
-        color: $gray-4
-    &.ant-menu-item-selected, &:hover, &.ant-menu-item-active, &:active
-        background-color: transparent
+        padding: 0 0 0 16px!important
+        border-radius: 8px
+        & svg
+            position: absolute
+            top: 12px
+            right: 12px
         & a
             color: $white
-        &::before
+        &:not(:last-child)
+            margin: 0 0 4px 0
+        & .ant-menu-title-content
+            font-family: $title-font
+            font-weight: $fontWeight-medium
+            font-size: $fontSize-h5
+            line-height: $lineHeight-h5
+            letter-spacing: $letterSpacing-4
+        &.ant-menu-item-selected, &:hover, &.ant-menu-item-active, &:active
             color: $white
-    & .ant-menu-title-content
-        font-family: $title-font
-        font-weight: $fontWeight-medium
-        font-size: $fontSize-h6
-        line-height: $lineHeight-h6
-        letter-spacing: $letterSpacing-4
-    & svg
-        position: absolute
-        top: 6px
-        right: 0
-    &::after
-        opacity: 0
-&.hs-menu-settings
-    & .ant-menu-item
-        display: flex
-        align-items: center
-        justify-content: flex-start
-    & svg path
-        fill: $gray-5
-    & .ant-menu-item-selected svg path
-        fill: $primary
+            background-color: $white
+        & a
+            color: $body
+        &.hs-sub-menu-item
+            height: 32px
+            line-height: 28px
+            padding-left: 20px!important
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
+            position: relative
+        & a
+            color: $gray-4
+        &::before
+            position: absolute
+            top: 0
+            right: 0
+            bottom: 0
+            left: 16px
+            background-color: transparent
+            content: '•'
+            color: $gray-4
+        &.ant-menu-item-selected, &:hover, &.ant-menu-item-active, &:active
+            background-color: transparent
+            & a
+                color: $white
+            &::before
+                color: $white
+        & .ant-menu-title-content
+            font-family: $title-font
+            font-weight: $fontWeight-medium
+            font-size: $fontSize-h6
+            line-height: $lineHeight-h6
+            letter-spacing: $letterSpacing-4
+        & svg
+            position: absolute
+            top: 6px
+            right: 0
+        &::after
+            opacity: 0
+    &.hs-menu-settings
+        & .ant-menu-item
+            display: flex
+            align-items: center
+            justify-content: flex-start
+        & svg path
+            fill: $gray-5
+        & .ant-menu-item-selected svg path
+            fill: $primary
 
-.hs-dropdown-tranlate
-    margin-top: 64px
-& ul h5
-    margin-bottom: 12px!important
-& .ant-dropdown-menu-item
-    & > span
+    .hs-dropdown-tranlate
+        margin-top: 64px
+    & ul h5
+        margin-bottom: 12px!important
+    & .ant-dropdown-menu-item
+        & > span
+            display: flex
+            justify-content: space-between
+            align-items: center
+        & .ant-dropdown-menu-item-icon
+            margin-right: 12px
+    & .hs-btn
         display: flex
-        justify-content: space-between
+        justify-content: center
         align-items: center
-    & .ant-dropdown-menu-item-icon
-        margin-right: 12px
-& .hs-btn
-    display: flex
-    justify-content: center
-    align-items: center
-    & svg
-        position: absolute
-        right: 10px
+        & svg
+            position: absolute
+            right: 10px
 
 .hs-loading-layout
     width: 100%
@@ -1715,19 +1348,19 @@ ul
     max-width: 1240px
     margin: 0 auto
     min-height: calc(100vh - 64px)
-&.hs-container-fixed
-    min-height: auto
-&.hs-container-home
-    @media (max-width: 960px)
+    &.hs-container-fixed
         min-height: auto
-& .ant-layout-content
-    height: 100%
-    display: flex
-    align-items: center
-    justify-content: center
+    &.hs-container-home
+        @media (max-width: 960px)
+            min-height: auto
+    & .ant-layout-content
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: center
 
-    &.ant-layout-content-start
-        align-items: flex-start
+        &.ant-layout-content-start
+            align-items: flex-start
 
 .ant-upload-list-picture-card-container,
 .ant-upload.ant-upload-select-picture-card
@@ -1742,8 +1375,8 @@ ul
     border-width: 0
     border-radius: 0
     color: #E3E3E3
-& .ant-collapse-item
-    border-bottom: 1px solid rgba(245, 243, 252, 0.5)
+    & .ant-collapse-item
+        border-bottom: 1px solid rgba(245, 243, 252, 0.5)
     & .ant-collapse-header
         padding: 30px 40px 30px 20px
         font-family: $title-font
@@ -1762,256 +1395,12 @@ ul
         color: #FFFFFF80
         margin: 0
 
-// .hs-roadmap-item
-//   display: flex
-//   justify-content: flex-start
-//   align-items: center
-//   width: 100%
-//   @media (max-width: 1024px)
-//     display: block
-//   &:nth-child(2)
-//     flex-direction: row-reverse
-//   & .hs-roadmap-item-title
-//     width: 120px
-//     text-align: right
-//     @media (max-width: 1024px)
-//       display: inline-block
-//       width: auto
-//       text-align: left
-//       padding-bottom: 12px
-//       margin-bottom: 12px
-//       border-bottom: 1px solid $white
-//   & .hs-roadmap-item-content
-//     border-left: 1px solid $white
-//     padding-left: 24px
-//     margin-left: 24px
-//     @media (max-width: 1024px)
-//       border-left-width: 0
-//       padding-left: 0
-//       margin-left: 0
-
-.hs-swiper-card
-    width: 100%
-    display: inline-block
-    aspect-ratio: 1
-& .swiper-slide
-    display: flex
-    align-items: center
-    justify-content: center
-    & img
-        border-radius: 20px
-& .swiper-pagination-bullet-active
-    background: $primary
-
-.ant-back-top
-    right: 20px
-    bottom: 20px
-    display: flex
-    justify-content: center
-    align-items: center
-    background-color: rgba(255, 255, 255, 0.1)
-    border-radius: 30px
-    width: 60px
-    height: 60px
-& svg
-    display: inline-block
-
-.hs-product-thumbnail
-    width: 100%
-    display: inline-block
-    aspect-ratio: 1
-& > span
-    overflow: hidden
-& img
-    border-radius: 15px
-    overflow: hidden
-& .ant-image
-    display: block
-    & .ant-image-mask
-        border-radius: 15px
-    & .ant-image-mask-info
-        display: flex
-        align-items: center
-
-.hs-product-item-container
-    width: 100%
-    border: 0
-    display: block
-    height: 100%
-    padding: 0
-    text-align: left
-    background-color: #131317
-    box-shadow: rgb(0 0 0 / 8%) 0px 4px 15px
-    transition: all 0.25s ease-in-out 0s
-    border-radius: 20px
-    position: relative
-    z-index: 2
-    overflow: hidden
-& .hs-product-meta
-    // width: 100%
-    // aspect-ratio: 1
-    // min-height: 275px
-&:not(:hover)
-    & .hs-product-meta img
-        transition: transform 0.4s ease 0s
-    & .ant-btn
-        left: 0px
-        width: 100%
-        position: absolute
-        bottom: -50px
-        visibility: hidden
-        border-radius: 0 0 20px 20px
-        transition: bottom 0.25s ease-in-out 0s, visibility 0s ease 0.25s
-&:hover
-    background-color: $gray-1
-    box-shadow: rgb(0 0 0 / 15%) 0px 6px 25px
-    transition: all 0.1s ease 0s
-    & .ant-btn
-        left: 0px
-        width: 100%
-        height: 28px
-        position: absolute
-        bottom: 0px
-        border-radius: 0 0 20px 20px
-        transition: bottom 0.25s ease-in-out 0s
-    & .hs-product-meta img
-        transform: scale(1.12)
-        transition-duration: 0.4s
-& .hs-product-content
-    padding: 12px 16px 28px 16px
-& .hs-purple-light
-    color: #BAA7FF!important
-& .ant-statistic-content
-    font-size: inherit
-
-.ant-anchor-ink::before
-    width: 0
-
-.ant-anchor-link
-    padding: 0
-
-.ant-image-preview-img-wrapper
-    display: inline-flex
-    justify-content: center
-    align-items: center
-
-.ant-skeleton-element
-    width: 100%
-& .ant-skeleton-image
-    width: 100%
-    height: 120px
-
-.ant-tree-switcher
-    width: 0
-
 .hs-detail-divider
     width: 1px
     height: 70px
     margin: 10px 0 0 0
     display: inline-block
     background: $white
-
-.hs-filter
-@media (max-width: 480px)
-    position: absolute
-    right: 0
-    bottom: -40px
-
-.hs-filter-menu
-    border-radius: 8px
-    box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.08)
-    padding: 12px
-    background: transparent
-&::before
-    content: ""
-    position: absolute
-    top: -1px
-    right: -1px
-    bottom: -1px
-    left: -1px
-    z-index: -2
-    border-radius: 24px
-    background: linear-gradient(09deg, #434343 0%, rgba(33, 33, 33, 0) 85.3%)
-&::after
-    content: ""
-    position: absolute
-    top: 0
-    right: 0
-    bottom: 0
-    left: 0
-    z-index: -1
-    border-radius: 23px
-    background: rgba(7,7,16,.7)
-
-.hs-pagination
-    display: flex
-    align-items: center
-    justify-content: center
-    flex-wrap: wrap
-    gap: 12px
-& .ant-pagination
-    display: inline-block
-    text-align: center
-    & > li
-        min-width: 40px
-        height: 40px
-        line-height: 40px
-        font-family: $title-font
-        font-weight: $fontWeight-bold
-        color: $white
-        letter-spacing: $letterSpacing-4
-        font-size: $fontSize-h5
-        border-radius: 8px
-        transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)
-    & .ant-pagination-item
-        border: 1px solid $gray-2
-        background: transparent
-    & a
-        color: $white
-    & .ant-pagination-item-active
-        background: $primary
-        border-color: $primary
-    & .ant-pagination-prev .ant-pagination-item-link, & .ant-pagination-next .ant-pagination-item-link
-        line-height: 40px
-        font-size: $fontSize-h5
-        background: transparent
-        border-width: 0
-        display: flex
-        align-items: center
-        justify-content: center
-    & svg path
-        fill: $white
-    & .ant-pagination-disabled .ant-pagination-item-link, & .ant-pagination-disabled:hover .ant-pagination-item-link
-        background: transparent
-        border-color: $body-light
-    & svg path
-        fill: $body-light
-    &:hover
-    & svg path
-        fill: $white
-
-.hs-pagination-total
-&.ant-pagination
-    color: $white
-
-.hs-not-found-container
-    display: flex
-    justify-content: center
-    align-items: center
-    width: 100%
-& .hs-not-found-inner-container
-    width: 100%
-    text-align: center
-    border: 1px solid rgba(162, 146, 224, 0.5)
-    border-radius: 8px
-    padding: 32px
-    & h1
-        font-size: 48px!important
-        line-height: 48px!important
-
-.main-pbackground
-    position: relative
-    background: #000000
 
 .top-gradient
     position: absolute
@@ -2056,36 +1445,36 @@ ul
     padding: 40px 40px 24px 40px
     border-radius: 24px
     overflow: hidden
-@media (max-width: 599px)
-    padding: 20px
-& .ant-table
-    background: transparent
-    color: $white
-    text-align: center
-    & .ant-table-container, table
-        border: 0!important
-    & .ant-table-thead > tr > th
-        text-align: center
-        background-color: transparent
+    @media (max-width: 599px)
+        padding: 20px
+    & .ant-table
+        background: transparent
         color: $white
-        border-bottom: 1px solid rgba(255, 255, 255, .25)
-        border-right: 1px solid rgba(255, 255, 255, .25)!important
-    & .ant-table-tbody > tr > td
-        border-bottom: 1px solid rgba(255, 255, 255, .25)
-        border-right: 1px solid rgba(255, 255, 255, .25)!important
-        transition: background 0.3s
         text-align: center
-    & .ant-table-tbody > tr.ant-table-row:hover > td, & .ant-table-tbody > tr > td.ant-table-cell-row-hover
-        background: #404040
-    & .ant-table-tbody > tr:last-child > td
-        border-bottom-width: 0
-    & .ant-table-tbody > tr > td:last-child,  & .ant-table-thead > tr > th:last-child
-        border-right-width: 0!important
-    & .ant-table-content > table > thead > tr:not(:last-child) > th
-        border-bottom: 1px solid rgba(255, 255, 255, .25)!important
-    // & .ant-table-tbody
-    //   & .ant-table-cell > div
-    //     color: $error
+        & .ant-table-container, table
+            border: 0!important
+        & .ant-table-thead > tr > th
+            text-align: center
+            background-color: transparent
+            color: $white
+            border-bottom: 1px solid rgba(255, 255, 255, .25)
+            border-right: 1px solid rgba(255, 255, 255, .25)!important
+        & .ant-table-tbody > tr > td
+            border-bottom: 1px solid rgba(255, 255, 255, .25)
+            border-right: 1px solid rgba(255, 255, 255, .25)!important
+            transition: background 0.3s
+            text-align: center
+        & .ant-table-tbody > tr.ant-table-row:hover > td, & .ant-table-tbody > tr > td.ant-table-cell-row-hover
+            background: #404040
+        & .ant-table-tbody > tr:last-child > td
+            border-bottom-width: 0
+        & .ant-table-tbody > tr > td:last-child,  & .ant-table-thead > tr > th:last-child
+            border-right-width: 0!important
+        & .ant-table-content > table > thead > tr:not(:last-child) > th
+            border-bottom: 1px solid rgba(255, 255, 255, .25)!important
+        // & .ant-table-tbody
+        //   & .ant-table-cell > div
+        //     color: $error
 
 .hs-transaction-out > td > div
     color: $error
@@ -2093,25 +1482,6 @@ ul
     content: "-"
 .hs-transaction-in > td > div
     color: $success
-  // & .ant-table
-  //   & .ant-table-tbody > tr > td > div
-  //     color: $error
-  //   & .ant-table-tbody > tr.ant-table-row > td.ant-table-cell > div
-
-.hs-bids-container
-    height: 400px
-    overflow-y: scroll
-
-.hs-card
-    padding: 40px
-    border-radius: 24px
-& .hs-card-image
-    border-radius: 20px
-
-.hs-card-color
-    background: #131317
-    padding: 40px
-    border-radius: 24px
 
 .hs-google-button
   // text-align: center
@@ -2129,44 +1499,6 @@ ul
 .hs-login-container
     max-width: 400px
 
-.hs-winner
-    background: #13131780
-    border-radius: 12px
-    position: absolute
-    z-index: 1
-    display: flex
-    align-items: center
-    flex-direction: column
-    justify-content: center
-    height: 100%
-    width: 100%
-
-.hs-timeline
-& .ant-timeline-item-tail
-    border-left: 1px solid rgba(255, 255, 255, 0.25)
-    top: 8px
-    height: calc(100% - 8px)
-& .ant-timeline-item-head
-    width: 8px
-    height: 8px
-    background-color: #fff
-    border: 2px solid $primary
-    margin-left: -3.5px!important
-& .ant-timeline-item-content
-    margin: 0 0 0 32px
-
-& .ant-timeline-item-label
-    width: calc(50% - 28px)!important
-    top: -5.001px!important
-    & h5
-        font-size: 17px!important
-& .ant-timeline-item-right .ant-timeline-item-label
-    left: calc(50% + 28px)!important
-& .ant-timeline-item-right .ant-timeline-item-content
-    width: calc(50% - 28px)!important
-& .ant-anchor-link-active > .ant-anchor-link-title
-    color: #8F9CA9 !important
-
 /* width */
 ::-webkit-scrollbar
     height: 2px
@@ -2183,31 +1515,6 @@ ul
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover
     background: $gray-1
-
-.hs-partner-item
-    padding: 24px
-    border: 1px solid rgba(255, 255, 255, 0.25)
-    border-radius: 20px
-    min-height: 244px
-& svg
-    transform: scale(1.2)
-.hs-member-item
-    padding: 24px
-    border: 0.5px solid #3a2d3e
-    border-radius: 20px
-    min-height: 244px
-& img
-    width: 60px
-    height: 60px
-    margin-left: auto
-    margin-right: auto
-    margin-top: -30px
-& .memberPic
-    width: 90px
-    height: 90px
-    margin-left: auto
-    margin-right: auto
-    margin-top: -60px
 
 .hs-cloud-1
     animation: bobble 7s infinite alternate
@@ -2228,19 +1535,16 @@ ul
         transform: translate3d(0px, 0px, 5px)
 
 .hs-radio
-&:hover,
-&:focus
-    background: $gray-1
-    box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
-    & label
+    &:hover,
+    &:focus
+        background: $gray-1
+        box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
+        & label
+            border-color: $primary
+    & input:checked
+        box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
+    & input:checked + label
         border-color: $primary
-  // & input:hover + label
-  //   transform: translate(-0.25rem,-0.25rem)
-  //   box-shadow: 0.25rem 0.25rem $black
-& input:checked
-    box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
-& input:checked + label
-    border-color: $primary
 
 .hs-radio-button-wrapper
     padding: 0 12px
@@ -2255,41 +1559,19 @@ ul
     letter-spacing: $letterSpacing-4
     color: $white
     border-radius: 100px!important
-& + .hs-radio-button-wrapper
-    margin-left: 8px
-&:first-child
-    border-left: 1px solid $primary
-&:before
-    content: none!important
-&.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled),
-&.ant-radio-button-wrapper:hover
-    color: $white
-    border: 1px solid $primary
-    border-right-color: $primary!important
-    background: $primary
-    box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
-
-.hs-bid-item
-    border: 1px solid rgba(255, 255, 255, 0.25)
-    border-radius: 20px
-    padding: 12px
-    display: flex
-    justify-content: space-between
-    align-items: center
-& .hs-bid-order
-    padding: 0 10px
-    border-radius: 20px
-    display: inline-flex
-    justify-content: center
-    align-items: center
-    // margin-right: 8px
-    min-width: 40px
-    height: 40px
-    & span
-        text-align: center
-& h5
-    @media (max-width: 400px)
-        font-size: 15px!important
+    & + .hs-radio-button-wrapper
+        margin-left: 8px
+    &:first-child
+        border-left: 1px solid $primary
+    &:before
+        content: none!important
+    &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled),
+    &.ant-radio-button-wrapper:hover
+        color: $white
+        border: 1px solid $primary
+        border-right-color: $primary!important
+        background: $primary
+        box-shadow: 0 0 0 4px rgba(116, 98, 255, 0.2)
 
 .ant-notification-notice
     border-radius: 20px
@@ -2297,31 +1579,31 @@ ul
     padding: 12px
     background: transparent
     overflow: inherit
-&::before
-    content: ""
-    position: absolute
-    top: -1px
-    right: -1px
-    bottom: -1px
-    left: -1px
-    z-index: -2
-    border-radius: 20px
-    background: linear-gradient(169deg, #434343 0%, rgba(33, 33, 33, 0) 85.3%)
-&::after
-    content: ""
-    position: absolute
-    top: 0
-    right: 0
-    bottom: 0
-    left: 0
-    z-index: -1
-    border-radius: 19px
-    background: rgba(7,7,16,.7)
-    backdrop-filter: blur(60px)
-& .ant-notification-notice-message, & .ant-notification-notice-description
-    color: $white
-& .ant-notification-notice-close svg path
-    fill: $white
+    &::before
+        content: ""
+        position: absolute
+        top: -1px
+        right: -1px
+        bottom: -1px
+        left: -1px
+        z-index: -2
+        border-radius: 20px
+        background: linear-gradient(169deg, #434343 0%, rgba(33, 33, 33, 0) 85.3%)
+    &::after
+        content: ""
+        position: absolute
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+        z-index: -1
+        border-radius: 19px
+        background: rgba(7,7,16,.7)
+        backdrop-filter: blur(60px)
+    & .ant-notification-notice-message, & .ant-notification-notice-description
+        color: $white
+    & .ant-notification-notice-close svg path
+        fill: $white
 
 .hs-svg-title-border
     fill: none
@@ -2333,10 +1615,10 @@ ul
     box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.08)!important
     background: #131317!important
     overflow: inherit!important
-& h1
-    display: none
-& label
-    color: $white!important
+    & h1
+        display: none
+    & label
+        color: $white!important
 
 .link
     display: none

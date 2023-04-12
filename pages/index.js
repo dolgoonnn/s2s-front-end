@@ -10,10 +10,11 @@ import Newsletter from '@components/template/Newsletter';
 
 import Footer from '@components/template/Footer';
 import Jobs from '@components/template/Jobs';
+import MainLayout from '@components/layout/MainLayout';
 
 function Home() {
     return (
-        <div className="bg-gray-900 font-inter antialiased  text-gray-200 tracking-tight flex flex-col min-h-screen overflow-hidden">
+        <MainLayout>
             {/*  Site header */}
             <Header />
 
@@ -38,7 +39,7 @@ function Home() {
 
             {/*  Site footer */}
             <Footer />
-        </div>
+        </MainLayout>
     );
 }
 
