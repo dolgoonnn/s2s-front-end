@@ -1,14 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from '@lib/context';
-import { Space, Avatar, Dropdown, Menu } from 'antd';
+import { Space, Avatar, Dropdown, Menu, Badge } from 'antd';
 import ChevronDown from '@assets/svgs/bx-chevron-down.svg';
 import { useRouter } from 'next/router';
+import { useNotifications } from '@lib/service';
 
 function Header() {
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
     const { user, signOut } = useSession();
     const router = useRouter();
+    const { data } = useNotifications();
+    console.log('🚀 ~ file: Header.js:14 ~ Header ~ data:', data);
 
     const trigger = useRef(null);
     const mobileNav = useRef(null);
@@ -159,6 +162,30 @@ function Header() {
         },
     ];
 
+    const notifMenu = [
+        {
+            key: '/editProfile',
+
+            label: <Link href="/editProfile">Мэдээлэл өөрчлөх</Link>,
+        },
+        {
+            key: '/tx',
+
+            label: <Link href="/tx">Хийгдсэн гүйлгээнүүд </Link>,
+        },
+        {
+            key: '/newJob',
+
+            label: <Link href="/newJob">Шинэ ажлын байр </Link>,
+        },
+        {
+            key: 'logout',
+            label: 'Гарах',
+
+            onClick: handleSignOut,
+        },
+    ];
+
     return (
         <header className="absolute w-full z-30">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -219,6 +246,28 @@ function Header() {
                                             <ChevronDown />
                                         </div>
                                     </Space>
+                                </Dropdown>
+                                <Dropdown
+                                    overlay={<Menu items={notifMenu} />}
+                                    placement="bottomRight"
+                                    overlayClassName="hs-dropdown hs-dropdown-profile"
+                                >
+                                    <Badge count={5}>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            strokeWidth={1.5}
+                                            stroke="currentColor"
+                                            className="w-6 h-6 text-white"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                                            />
+                                        </svg>
+                                    </Badge>
                                 </Dropdown>
                             </ul>
                         ) : (

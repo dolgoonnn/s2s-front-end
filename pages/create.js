@@ -2,20 +2,56 @@ import React from 'react';
 import MainLayout from '@components/layout/MainLayout';
 import Header from '@components/template/Header';
 import PageIllustration from '@components/template/PageIllustration';
+import { createTeachingRequest } from '@lib/service';
+import { notification } from 'antd';
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import { convertToHTML } from 'draft-convert';
+import { EditorState } from 'draft-js';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+const Editor = dynamic(
+    () => import('react-draft-wysiwyg').then((mod) => mod.Editor),
+    { ssr: false }
+);
 
-export default function createTeaching() {
+export default function CreateTeaching() {
+    const [editorState, setEditorState] = useState(() =>
+        EditorState.createEmpty()
+    );
+    const [convertedContent, setConvertedContent] = useState(null);
+
+    useEffect(() => {
+        let html = convertToHTML(editorState.getCurrentContent());
+        setConvertedContent(html);
+    }, [editorState]);
+    const openNotificationWithIcon = (type, data) => {
+        notification[type]({
+            message: type === 'success' ? 'success' : 'error',
+            description: data,
+        });
+    };
     const onSubmit = async (event) => {
         event.preventDefault();
 
-        const { name, message, email } = event.target; // Replace with your form field names
+        const { price, code, title } = event.target; // Replace with your form field names
 
         const formData = {
-            name: name.value,
-            message: message.value,
-            email: email.value,
+            title: title.value,
+            price: price.value,
+            code: code.value,
+            description: convertedContent,
         };
 
         console.log(formData);
+
+        const { data, status } = await createTeachingRequest(formData);
+
+        if (status == 200) {
+            openNotificationWithIcon(
+                'success',
+                'Амжилттай хичээл заах зар нийтэллээ'
+            );
+        }
     };
     return (
         <MainLayout>
@@ -71,27 +107,15 @@ export default function createTeaching() {
                     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
                             <div className="lg:col-span-2 lg:py-12">
+                                <h2 className="h2 mb-4">
+                                    Хичээл заах зар нийтлэх
+                                </h2>
                                 <p className="max-w-xl text-lg">
-                                    At the same time, the fact that we are
-                                    wholly owned and totally independent from
-                                    manufacturer and other group control gives
-                                    you confidence that we will only recommend
-                                    what is right for you.
+                                    Нийтлэснээр тань руу сонирхсон хүн чат бичих
+                                    болно. Хэрвээ ямар нэг байдлаар муу заавал
+                                    муу үнэлгээ авж дахин хичээл заахад
+                                    хүндрэлтэй болно шүү
                                 </p>
-
-                                <div className="mt-8">
-                                    <a
-                                        href=""
-                                        className="text-2xl font-bold text-pink-600"
-                                    >
-                                        0151 475 4450
-                                    </a>
-
-                                    <address className="mt-2 not-italic">
-                                        282 Kevin Brook, Imogeneborough, CA
-                                        58517
-                                    </address>
-                                </div>
                             </div>
 
                             <div className="rounded-lg bg-gray-800 p-8 shadow-lg lg:col-span-3 lg:p-12">
@@ -99,16 +123,16 @@ export default function createTeaching() {
                                     <div>
                                         <label
                                             className="block text-gray-300 text-sm font-medium mb-1"
-                                            htmlFor="name"
+                                            htmlFor="title"
                                         >
-                                            Name
+                                            Гарчиг
                                         </label>
                                         <input
                                             className="form-input w-full text-gray-300"
                                             required
-                                            placeholder="Name"
+                                            placeholder="Тайлбар"
                                             type="text"
-                                            id="name"
+                                            id="title"
                                         />
                                     </div>
 
@@ -116,52 +140,84 @@ export default function createTeaching() {
                                         <div>
                                             <label
                                                 className="block text-gray-300 text-sm font-medium mb-1"
-                                                htmlFor="email"
+                                                htmlFor="code"
                                             >
-                                                Name
+                                                Хичээлын код(DBM121 гэх мэт)
+                                            </label>
+
+                                            <input
+                                                className="form-input w-full text-gray-300"
+                                                placeholder="DBM121"
+                                                type="text"
+                                                id="code"
+                                                required
+                                            />
+                                        </div>
+                                        <div>
+                                            <label
+                                                className="block text-gray-300 text-sm font-medium mb-1"
+                                                htmlFor="price"
+                                            >
+                                                Үнэ(хоол, амттай юм байсан ч
+                                                болно хаха)
                                             </label>
                                             <input
                                                 className="form-input w-full text-gray-300"
                                                 placeholder="Email address"
-                                                type="email"
-                                                id="email"
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <label
-                                                className="block text-gray-300 text-sm font-medium mb-1"
-                                                htmlFor="email"
-                                            >
-                                                Name
-                                            </label>
-
-                                            <input
-                                                className="form-input w-full text-gray-300"
-                                                placeholder="Phone Number"
-                                                type="tel"
-                                                id="phone"
+                                                type="text"
+                                                id="price"
+                                                required
                                             />
                                         </div>
                                     </div>
-
-                                    <div>
+                                    <div className="col-span-2">
                                         <label
                                             className="block text-gray-300 text-sm font-medium mb-1"
                                             htmlFor="email"
                                         >
-                                            Name
+                                            Тайлбар(хичээлтэй холбоотой юу заах
+                                            болон хэр удаан заах талаар)
                                         </label>
+                                        <Editor
+                                            editorState={editorState}
+                                            onEditorStateChange={setEditorState}
+                                            toolbarClassName="toolbar-class text-black"
+                                            wrapperClassName="wrapper-class "
+                                            editorClassName="bg-transparent shadow-lg max-w-5xl mx-auto  border-0 text-gray-300"
+                                            toolbar={{
+                                                options: [
+                                                    'inline',
+                                                    'blockType',
+                                                    'list',
+                                                    'remove',
+                                                ],
+                                                inline: {
+                                                    options: [
+                                                        'bold',
+                                                        'italic',
+                                                        'underline',
+                                                    ],
+                                                },
+                                                blockType: {
+                                                    inDropdown: true,
+                                                    options: [
+                                                        'Normal',
 
-                                        <textarea
-                                            className="form-input w-full text-gray-300"
-                                            placeholder="Message"
-                                            rows="4"
-                                            id="message"
-                                        ></textarea>
+                                                        'H3',
+                                                        'H4',
+                                                        'H5',
+                                                        'H6',
+                                                    ],
+                                                    className: undefined,
+                                                    component: undefined,
+                                                    dropdownClassName:
+                                                        undefined,
+                                                },
+                                            }}
+                                        />
                                     </div>
 
-                                    <div className="mt-4">
+                                    <div className="mt-4 flex justify-end">
                                         <button
                                             type="submit"
                                             className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"

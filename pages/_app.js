@@ -10,6 +10,7 @@ import { mutateUserProfile, useUserProfile } from '@lib/hooks';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import '@assets/styles/globals.sass';
+import MainHead from '@components/layout/mainHead';
 
 export default function App({ Component, pageProps }) {
     const router = useRouter();
@@ -68,9 +69,25 @@ export default function App({ Component, pageProps }) {
     useEffect(() => {
         authCheck(window.location.pathname);
     }, [user, loading, router.asPath]);
+
+    const title = pageProps?.title ? pageProps.title : 'Нүүр';
+    const description = pageProps?.description
+        ? pageProps.description
+        : 'S2S.MN';
+    const image = pageProps?.image
+        ? pageProps.image
+        : `https://s2s-front-end.vercel.app/logos2s.png`;
     return (
-        <SessionContext.Provider value={{ user, loading, signIn, signOut }}>
-            {authorized && <Component {...pageProps} />}
-        </SessionContext.Provider>
+        <>
+            <MainHead
+                title={title}
+                // slug={slug}
+                image={image}
+                description={description}
+            />
+            <SessionContext.Provider value={{ user, loading, signIn, signOut }}>
+                {authorized && <Component {...pageProps} />}
+            </SessionContext.Provider>
+        </>
     );
 }

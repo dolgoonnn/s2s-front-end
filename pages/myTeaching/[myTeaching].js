@@ -17,22 +17,22 @@ import Link from 'next/link';
 import AdCard from '@components/template/AdCard';
 import DOMPurify from 'dompurify';
 import { useSession } from '@lib/context';
+import UserCard from '@components/template/userCard';
 
 export default function Detail() {
     const [loading, setLoading] = useState(false);
     const [requestSent, setRequestSent] = useState(false);
-    console.log('🚀 ~ file: [id].js:24 ~ Detail ~ requestSent:', requestSent);
+    const [requests, setRequests] = useState([]);
+
     const router = useRouter();
     const { user } = useSession();
-    const id = router.query.id;
+    const id = router.query.myTeaching;
     const { data: fetchedTeaching } = useOneTeaching(id);
-    console.log('🚀 ~ file: [id].js:12 ~ Detail ~ teaching:', fetchedTeaching);
+
     const { data: userTeaching } = useTeacherTeaching(
         fetchedTeaching?.teaching?.userId
     );
-    console.log('🚀 ~ file:', userTeaching);
 
-    console.log('🚀 ~ file: [id].js:12 ~ Detail ~ teaching:', userTeaching);
     const openNotificationWithIcon = (type, data) => {
         notification[type]({
             message: type === 'success' ? 'Амжилттай' : 'Алдаа гарлаа',
@@ -62,21 +62,8 @@ export default function Detail() {
     }
     const fetchTeachingRequests = async (id) => {
         const data = await getTeachingRequests(id);
-        console.log(
-            '🚀 ~ file: [id].js:61 ~ fetchTeachingRequests ~ data:',
-            data
-        );
 
-        const sentRequest = data?.learnRequests?.rows.find(
-            (c) => c.userId == user.id
-        );
-        if (sentRequest) {
-            setRequestSent(true);
-        }
-        console.log(
-            '🚀 ~ file: [id].js:66 ~ fetchTeachingRequests ~ sentRequest:',
-            sentRequest
-        );
+        setRequests(data);
     };
 
     useEffect(() => {
@@ -262,41 +249,11 @@ export default function Detail() {
                                     </div>
                                     {/* </div> */}
                                 </div>
-                                {requestSent ? (
-                                    <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
-                                        Хүсэлт явсан✅
-                                    </button>
-                                ) : (
-                                    <Popconfirm
-                                        title="Хүсэлтээ явуулах"
-                                        onConfirm={confirmRequestSend}
-                                        onCancel={cancel}
-                                        okText="Явуулах"
-                                        cancelText="Болих"
-                                    >
-                                        <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
-                                            Бүртгүүлэх
-                                        </button>
-                                    </Popconfirm>
-                                )}
-                                <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
-                                    Холбоо барих
-                                </button>
                             </div>
                         </div>
-                        {userTeaching &&
-                            userTeaching?.teachings?.rows
-                                .filter(
-                                    (teaching) =>
-                                        teaching.id !=
-                                        fetchedTeaching?.teaching?.userId
-                                )
-                                .map((teaching) => (
-                                    <AdCard
-                                        key={teaching.id}
-                                        detail={teaching}
-                                    />
-                                ))}
+                        {requests?.learnRequests?.rows.map((teaching) => (
+                            <UserCard key={teaching.id} detail={teaching} />
+                        ))}
                     </div>
                 </div>
             </main>

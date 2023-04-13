@@ -262,14 +262,39 @@ a.hs-btn
         background: $primaryHover
         color: $white
 .hs-markdown
-.hljs
-    background: $true-gray-800
-    border-radius: 10px
-    color: $white
-.hljs-string
-    color: $primary
-.htjs-tag
-    color: $secondary
+    .hljs
+        background: $true-gray-800
+        border-radius: 10px
+        color: $white
+    .hljs-string
+        color: $primary
+    .htjs-tag
+        color: $secondary
+    h2,
+    h3
+        margin: 30px 0
+    code
+        font-size: 0.9rem
+        margin: 0px 0 12px 0
+    p
+        margin: 20px 0
+    img
+        margin: 12px 0 0px 0
+    a
+        color: #1677ff
+        &:hover
+            color: #1677ff
+            text-decoration: underline
+    ol
+        list-style-type: decimal
+        padding: 2px 0 2px 40px
+    ul
+        list-style-type: disc
+        padding: 2px 0 2px 40px
+        // li
+        //   padding: 2px 0 2px 24px
+        // li::marker
+        //   padding: 2px 0 2px 24px
 
 .hs-btn-primary
     text-shadow: none
