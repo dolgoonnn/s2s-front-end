@@ -11,7 +11,6 @@ function Header() {
     const { user, signOut } = useSession();
     const router = useRouter();
     const { data } = useNotifications();
-    console.log('🚀 ~ file: Header.js:14 ~ Header ~ data:', data);
 
     const trigger = useRef(null);
     const mobileNav = useRef(null);
@@ -162,29 +161,27 @@ function Header() {
         },
     ];
 
-    const notifMenu = [
-        {
-            key: '/editProfile',
+    const notifMenu = [];
 
-            label: <Link href="/editProfile">Мэдээлэл өөрчлөх</Link>,
-        },
-        {
-            key: '/tx',
-
-            label: <Link href="/tx">Хийгдсэн гүйлгээнүүд </Link>,
-        },
-        {
-            key: '/newJob',
-
-            label: <Link href="/newJob">Шинэ ажлын байр </Link>,
-        },
-        {
-            key: 'logout',
-            label: 'Гарах',
-
-            onClick: handleSignOut,
-        },
-    ];
+    // Iterate through the rows array and push each object to notifMenu array
+    data?.learnReqNotifs?.rows.forEach((learnReqNotif) => {
+        notifMenu.push({
+            key: `/learnReqNotifs/${learnReqNotif.id}`, // Use a unique key for each element
+            label: (
+                <Link href={`/teaching/${learnReqNotif?.teaching?.id}`}>
+                    Хичээлийн хүсэлт баталгаажлаа
+                </Link>
+            ), // Update the label as needed
+        });
+    });
+    data?.teachinNotifs?.rows.forEach((learnReqNotif) => {
+        notifMenu.push({
+            key: `/learnReqNotifs/${learnReqNotif?.teaching?.id}`, // Use a unique key for each element
+            label: (
+                <Link href={`/teaching/${learnReqNotif.id}`}>Шинэ хүсэлт</Link>
+            ), // Update the label as needed
+        });
+    });
 
     return (
         <header className="absolute w-full z-30">
@@ -252,7 +249,7 @@ function Header() {
                                     placement="bottomRight"
                                     overlayClassName="hs-dropdown hs-dropdown-profile"
                                 >
-                                    <Badge count={5}>
+                                    <Badge count={notifMenu?.length}>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="none"

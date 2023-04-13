@@ -2,7 +2,6 @@ import moment from 'moment';
 import { useRouter } from 'next/router';
 
 export default function AdCard({ detail, myTeaching }) {
-    console.log('🚀 ~ file: AdCard.js:4 ~ AdCard ~ detail:', detail);
     // const detail = props.data;
     const router = useRouter();
     const handleJump = () => {

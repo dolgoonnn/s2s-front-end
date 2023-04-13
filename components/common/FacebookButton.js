@@ -58,7 +58,8 @@ export default function FacebookButton() {
             <Button
                 onClick={() => onClick(renderProps)}
                 block
-                className="btn px-0 text-white hover:text-gray-200 bg-gray-700 hover:bg-gray-800 w-full relative flex items-center"
+                type="default"
+                className="btn px-0 hs-btn  text-white hover:text-gray-200 bg-gray-700 hover:bg-gray-800 w-full relative flex items-center"
                 loading={loading}
             >
                 <div className="flex gap-2">

@@ -84,7 +84,7 @@ export default function RequestCard({ detail }) {
                                 {/* <div className="p-2 mt-1  rounded-2xl text-lg text-white">
                                 {detail?.description}
                             </div> */}
-                                <div className="flex flex-row min-w-32  justify-start  gap-2 md:justify-center my-auto h-full">
+                                <div className="flex flex-row min-w-32  justify-start items-center gap-2 md:justify-center my-auto h-full">
                                     <button
                                         className="btn-sm text-white bg-purple-600 hover:bg-purple-700 mb-4 sm:w-auto sm:mb-0 block md:hidden md:group-hover:block md:my-auto"
                                         // onClick={() => {
@@ -115,18 +115,18 @@ export default function RequestCard({ detail }) {
                                         </div>
                                     </button>
                                     {detail?.status == 'PENDING' && (
-                                        <div className="inline-flex text-xs font-semibold py-1 px-3  text-yellow-600 bg-yellow-200 rounded-full mb-4">
+                                        <div className="inline-flex text-xs font-semibold py-1 px-3  text-yellow-600 bg-yellow-200 rounded-full">
                                             PENDING
                                         </div>
                                     )}
                                     {detail?.status == 'APPROVED' && (
-                                        <div className="inline-flex text-xs font-semibold py-1 px-3  text-green-600 bg-green-200 rounded-full mb-4">
+                                        <div className="inline-flex text-xs font-semibold py-1 px-3  text-green-600 bg-green-200 rounded-full ">
                                             APPROVED
                                         </div>
                                     )}
-                                    <p className="rounded-2xl text-base text-gray-200 mt-1 md:mt-0 md:my-auto block md:group-hover:hidden">
+                                    {/* <p className="rounded-2xl text-base text-gray-200 mt-1 md:mt-0 md:my-auto block md:group-hover:hidden">
                                         {moment(detail?.createdAt).fromNow()}
-                                    </p>
+                                    </p> */}
                                 </div>
                             </div>
                         </div>

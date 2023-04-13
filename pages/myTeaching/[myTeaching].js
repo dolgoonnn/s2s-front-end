@@ -28,6 +28,10 @@ export default function Detail() {
     const { user } = useSession();
     const id = router.query.myTeaching;
     const { data: fetchedTeaching } = useOneTeaching(id);
+    console.log(
+        '🚀 ~ file: [myTeaching].js:31 ~ Detail ~ fetchedTeaching:',
+        fetchedTeaching
+    );
 
     const { data: userTeaching } = useTeacherTeaching(
         fetchedTeaching?.teaching?.userId
@@ -85,7 +89,7 @@ export default function Detail() {
                     <PageIllustration />
                 </div>
                 <div className="min-h-screen">
-                    <div className=" mt-28 space-y-7">
+                    <div className=" mt-28 space-y-7 max-w-6xl mx-auto px-4 sm:px-6 relative">
                         <div className="flex flex-col-reverse md:flex-row">
                             <Space
                                 direction="vertical"
@@ -119,6 +123,21 @@ export default function Detail() {
                                     )}
                                     className="hs-markdown"
                                 ></div>
+                                <div className="py-28">
+                                    <h4 className="h4 mb-4">
+                                        Ирүүлсэн хүсэлтүүд
+                                    </h4>
+                                    <div className="space-y-8">
+                                        {requests?.learnRequests?.rows.map(
+                                            (teaching) => (
+                                                <UserCard
+                                                    key={teaching.id}
+                                                    detail={teaching}
+                                                />
+                                            )
+                                        )}
+                                    </div>{' '}
+                                </div>
                             </Space>
                             <div className="ml:0 md:ml-20 w-full md:w-72 mb-8 md:mb-8 h-full shrink-0 space-y-4">
                                 <div className="border border-trueGray-700 bg-trueGray-800 rounded-xl ">
@@ -251,9 +270,6 @@ export default function Detail() {
                                 </div>
                             </div>
                         </div>
-                        {requests?.learnRequests?.rows.map((teaching) => (
-                            <UserCard key={teaching.id} detail={teaching} />
-                        ))}
                     </div>
                 </div>
             </main>

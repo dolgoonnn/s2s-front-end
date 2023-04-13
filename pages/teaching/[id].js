@@ -17,22 +17,23 @@ import Link from 'next/link';
 import AdCard from '@components/template/AdCard';
 import DOMPurify from 'dompurify';
 import { useSession } from '@lib/context';
+import Chat from '@components/modal/chat';
 
 export default function Detail() {
     const [loading, setLoading] = useState(false);
     const [requestSent, setRequestSent] = useState(false);
-    console.log('🚀 ~ file: [id].js:24 ~ Detail ~ requestSent:', requestSent);
+    const [chatModal, setChatModal] = useState(false);
+    const [requestStatus, setRequestStatus] = useState({});
+
     const router = useRouter();
     const { user } = useSession();
     const id = router.query.id;
     const { data: fetchedTeaching } = useOneTeaching(id);
-    console.log('🚀 ~ file: [id].js:12 ~ Detail ~ teaching:', fetchedTeaching);
+
     const { data: userTeaching } = useTeacherTeaching(
         fetchedTeaching?.teaching?.userId
     );
-    console.log('🚀 ~ file:', userTeaching);
 
-    console.log('🚀 ~ file: [id].js:12 ~ Detail ~ teaching:', userTeaching);
     const openNotificationWithIcon = (type, data) => {
         notification[type]({
             message: type === 'success' ? 'Амжилттай' : 'Алдаа гарлаа',
@@ -72,6 +73,7 @@ export default function Detail() {
         );
         if (sentRequest) {
             setRequestSent(true);
+            setRequestStatus(sentRequest?.status);
         }
         console.log(
             '🚀 ~ file: [id].js:66 ~ fetchTeachingRequests ~ sentRequest:',
@@ -98,13 +100,13 @@ export default function Detail() {
                     <PageIllustration />
                 </div>
                 <div className="min-h-screen">
-                    <div className=" mt-28 space-y-7">
+                    <div className=" mt-28 space-y-7 max-w-6xl mx-auto px-4 sm:px-6 relative">
                         <div className="flex flex-col-reverse md:flex-row">
                             <Space
                                 direction="vertical"
                                 className=" w-full h-full"
                             >
-                                <Link href={'/jobs'}>
+                                <Link href={'/'}>
                                     <div className="mb-4 flex items-center gap-1 text-primary">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -130,8 +132,29 @@ export default function Detail() {
                                     dangerouslySetInnerHTML={createMarkup(
                                         fetchedTeaching?.teaching?.description
                                     )}
-                                    className="hs-markdown"
+                                    className="hs-markdown pb-28"
                                 ></div>
+                                <div className="py-28">
+                                    <h4 className="h4 mb-4">
+                                        Бусад сургалтууд
+                                    </h4>
+                                    <div className="space-y-8">
+                                        {userTeaching &&
+                                            userTeaching?.teachings?.rows
+                                                .filter(
+                                                    (teaching) =>
+                                                        teaching.id !=
+                                                        fetchedTeaching
+                                                            ?.teaching?.userId
+                                                )
+                                                .map((teaching) => (
+                                                    <AdCard
+                                                        key={teaching.id}
+                                                        detail={teaching}
+                                                    />
+                                                ))}
+                                    </div>
+                                </div>
                             </Space>
                             <div className="ml:0 md:ml-20 w-full md:w-72 mb-8 md:mb-8 h-full shrink-0 space-y-4">
                                 <div className="border border-trueGray-700 bg-trueGray-800 rounded-xl ">
@@ -166,6 +189,9 @@ export default function Detail() {
                                             className=" flex flex-col gap-2 justify-center"
                                         >
                                             <div className="flex flex-col mx-auto justify-center">
+                                                <p className="mt-0.5 text-xs text-gray-500">
+                                                    Бүртгүүлсэн
+                                                </p>
                                                 <div className=" flex justify-start items-center gap-2">
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +218,7 @@ export default function Detail() {
 
                                                 <div className="mt-4 flex items-center gap-4">
                                                     <p className="text-3xl font-medium">
-                                                        3.8
+                                                        4
                                                         <span className="sr-only">
                                                             {' '}
                                                             Average review score{' '}
@@ -244,7 +270,7 @@ export default function Detail() {
                                                         </div>
 
                                                         <p className="mt-0.5 text-xs text-gray-500">
-                                                            Based on 48 reviews
+                                                            Based on 2 reviews
                                                         </p>
                                                     </div>
                                                 </div>
@@ -263,9 +289,15 @@ export default function Detail() {
                                     {/* </div> */}
                                 </div>
                                 {requestSent ? (
-                                    <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
-                                        Хүсэлт явсан✅
-                                    </button>
+                                    requestStatus == 'APPROVED' ? (
+                                        <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
+                                            Хүсэлт баталгаажсан✅
+                                        </button>
+                                    ) : (
+                                        <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
+                                            Хүсэлт явсан
+                                        </button>
+                                    )
                                 ) : (
                                     <Popconfirm
                                         title="Хүсэлтээ явуулах"
@@ -279,27 +311,40 @@ export default function Detail() {
                                         </button>
                                     </Popconfirm>
                                 )}
-                                <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
+                                <button className="btn text-white bg-gray-700 hover:bg-gray-800 w-full mb-4  sm:mb-0">
                                     Холбоо барих
                                 </button>
                             </div>
                         </div>
-                        {userTeaching &&
-                            userTeaching?.teachings?.rows
-                                .filter(
-                                    (teaching) =>
-                                        teaching.id !=
-                                        fetchedTeaching?.teaching?.userId
-                                )
-                                .map((teaching) => (
-                                    <AdCard
-                                        key={teaching.id}
-                                        detail={teaching}
-                                    />
-                                ))}
                     </div>
                 </div>
             </main>
+            <button
+                onClick={() => setChatModal(true)}
+                title="Contact Sale"
+                className="fixed z-90 bottom-10 right-8 bg-purple-600 w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-purple-700"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-8 h-8"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+                    />
+                </svg>
+            </button>
+            <Chat
+                visible={chatModal}
+                setVisible={() => setChatModal(false)}
+                id={id}
+                detail={fetchedTeaching?.teaching}
+            />
         </MainLayout>
     );
 }

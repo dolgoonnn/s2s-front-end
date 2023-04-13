@@ -2,6 +2,7 @@ import moment from 'moment';
 import { useRouter } from 'next/router';
 import { Popconfirm, notification } from 'antd';
 import { useState } from 'react';
+import { approveLearnRequest } from '@lib/service';
 
 export default function UserCard({ detail }) {
     const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ export default function UserCard({ detail }) {
 
     const confirmRequestSend = async () => {
         setLoading(true);
-        const { data, status } = await createLearnRequest(id);
+        const { data, status } = await approveLearnRequest(detail?.id);
 
         if (status == 200) {
             openNotificationWithIcon(
@@ -44,11 +45,17 @@ export default function UserCard({ detail }) {
                     <div className="flex items-center">
                         <div className="ml-3 flex flex-col md:flex-row justify-between w-full align-middle">
                             <div className="flex flex-col md:flex-row">
+                                <div className="h-14 bg-white w-14 mr-5 my-auto rounded-full overflow-hidden flex items-center ">
+                                    {detail?.user?.profileImage && (
+                                        <img
+                                            src={detail?.user?.profileImage}
+                                            alt={detail?.user?.userName}
+                                            className="inline h-auto w-full "
+                                        />
+                                    )}
+                                </div>
                                 <div>
                                     <div className="flex items-center mb-1">
-                                        <p className="text-base  ">
-                                            {detail?.user?.userName}
-                                        </p>
                                         {/* {detail?.type != 'FREE' && (
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -75,16 +82,20 @@ export default function UserCard({ detail }) {
                                     // }}
                                     >
                                         <h3 className="text-xl mb-2 font-bold tracking-wide hover:cursor-pointer">
-                                            {detail?.title}
+                                            {detail?.user?.email}
                                         </h3>
                                     </a>
                                     <div className="flex flex-row gap-2 mt-1">
-                                        <div className="inline-flex rounded-full font-semibold text-xs py-1 px-3  bg-blue-200 text-blue-600 mb-4">
-                                            {detail?.price}
-                                        </div>
-                                        <div className="inline-flex text-xs font-semibold py-1 px-3  text-green-600 bg-green-200 rounded-full mb-4">
-                                            {detail?.code}
-                                        </div>
+                                        {detail?.status == 'PENDING' && (
+                                            <div className="inline-flex text-xs font-semibold py-1 px-3  text-yellow-600 bg-yellow-200 rounded-full mb-4">
+                                                PENDING
+                                            </div>
+                                        )}
+                                        {detail?.status == 'APPROVED' && (
+                                            <div className="inline-flex text-xs font-semibold py-1 px-3  text-green-600 bg-green-200 rounded-full mb-4">
+                                                APPROVED
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -95,17 +106,19 @@ export default function UserCard({ detail }) {
                                 <p className="rounded-2xl text-base text-gray-200 my-auto   block ">
                                     {moment(detail?.createdAt).fromNow()}
                                 </p>
-                                <Popconfirm
-                                    title="Хүсэлтээ явуулах"
-                                    onConfirm={confirmRequestSend}
-                                    onCancel={cancel}
-                                    okText="Явуулах"
-                                    cancelText="Болих"
-                                >
-                                    <button className="btn-sm text-white bg-purple-600 hover:bg-purple-700 mb-4 sm:w-auto sm:mb-0  md:group-hover:block md:my-auto">
-                                        Зөвшөөрөх
-                                    </button>
-                                </Popconfirm>
+                                {detail?.status == 'PENDING' && (
+                                    <Popconfirm
+                                        title="Хүсэлтээ явуулах"
+                                        onConfirm={confirmRequestSend}
+                                        onCancel={cancel}
+                                        okText="Явуулах"
+                                        cancelText="Болих"
+                                    >
+                                        <button className="btn-sm text-white bg-purple-600 hover:bg-purple-700 mb-4 sm:w-auto sm:mb-0  md:group-hover:block md:my-auto">
+                                            Зөвшөөрөх
+                                        </button>
+                                    </Popconfirm>
+                                )}
                             </div>
                         </div>
                     </div>

@@ -24,7 +24,7 @@ export default function Index() {
                 >
                     <PageIllustration />
                 </div>
-                <section className="relative pt-32">
+                <section className="relative pt-32 max-w-6xl mx-auto px-4 sm:px-6">
                     <h4 className="h4 mb-4" data-aos="fade-up">
                         Миний нийтлэсэн сургалтууд
                     </h4>
