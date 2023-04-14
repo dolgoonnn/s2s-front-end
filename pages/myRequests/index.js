@@ -29,9 +29,11 @@ export default function Index() {
                     <h4 className="h4 mb-4" data-aos="fade-up">
                         Миний явуулсан хүсэлт
                     </h4>
-                    {myRequests?.learnRequests?.rows.map((teaching) => (
-                        <RequestCard key={teaching.id} detail={teaching} />
-                    ))}
+                    <div className="space-y-8">
+                        {myRequests?.learnRequests?.rows.map((teaching) => (
+                            <RequestCard key={teaching.id} detail={teaching} />
+                        ))}
+                    </div>
                 </section>
             </main>
         </MainLayout>

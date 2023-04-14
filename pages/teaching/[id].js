@@ -9,6 +9,8 @@ import {
     getTeacherTeaching,
     createLearnRequest,
     getTeachingRequests,
+    postReview,
+    useReview,
 } from '@lib/service';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
@@ -18,21 +20,34 @@ import AdCard from '@components/template/AdCard';
 import DOMPurify from 'dompurify';
 import { useSession } from '@lib/context';
 import Chat from '@components/modal/chat';
+import StarRating from 'react-star-rating-component';
 
 export default function Detail() {
     const [loading, setLoading] = useState(false);
     const [requestSent, setRequestSent] = useState(false);
     const [chatModal, setChatModal] = useState(false);
     const [requestStatus, setRequestStatus] = useState({});
+    const [ratingMode, setRatingMode] = useState(false);
 
     const router = useRouter();
     const { user } = useSession();
     const id = router.query.id;
     const { data: fetchedTeaching } = useOneTeaching(id);
+    const { data: fetchedReview } = useReview(id);
+    console.log(
+        '🚀 ~ file: [id].js:37 ~ Detail ~ fetchedReview:',
+        fetchedReview
+    );
+    const [rating, setRating] = useState(0);
+    console.log('🚀 ~ file: [id].js:36 ~ Detail ~ rating:', rating);
 
     const { data: userTeaching } = useTeacherTeaching(
         fetchedTeaching?.teaching?.userId
     );
+
+    const handleStarClick = (nextValue, prevValue, name) => {
+        setRating(nextValue);
+    };
 
     const openNotificationWithIcon = (type, data) => {
         notification[type]({
@@ -86,6 +101,22 @@ export default function Detail() {
             fetchTeachingRequests(id);
         }
     }, [id]);
+
+    const handleReview = async () => {
+        const object = {
+            rating,
+        };
+        const { data, status } = await postReview(id, object);
+        if (status == 200) {
+            openNotificationWithIcon('success', 'Амжилттай үнэлгээ явууллаа');
+            setRatingMode(false);
+            // mutateProjectComments(comment.id);
+            setLoading(false);
+            return;
+        } else {
+            openNotificationWithIcon('error', 'Failed to create request');
+        }
+    };
 
     return (
         <MainLayout>
@@ -193,20 +224,6 @@ export default function Detail() {
                                                     Бүртгүүлсэн
                                                 </p>
                                                 <div className=" flex justify-start items-center gap-2">
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        strokeWidth={1.5}
-                                                        stroke="currentColor"
-                                                        className="w-4 h-4"
-                                                    >
-                                                        <path
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-                                                        />
-                                                    </svg>
                                                     <p className=" text-base rounded-2xl  text-white">
                                                         {moment(
                                                             fetchedTeaching
@@ -226,51 +243,31 @@ export default function Detail() {
                                                     </p>
 
                                                     <div>
-                                                        <div className="flex">
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                className="h-5 w-5 text-yellow-400"
-                                                                viewBox="0 0 20 20"
-                                                                fill="currentColor"
-                                                            >
-                                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                            </svg>
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                className="h-5 w-5 text-yellow-400"
-                                                                viewBox="0 0 20 20"
-                                                                fill="currentColor"
-                                                            >
-                                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                            </svg>
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                className="h-5 w-5 text-yellow-400"
-                                                                viewBox="0 0 20 20"
-                                                                fill="currentColor"
-                                                            >
-                                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                            </svg>
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                className="h-5 w-5 text-yellow-400"
-                                                                viewBox="0 0 20 20"
-                                                                fill="currentColor"
-                                                            >
-                                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                            </svg>
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                className="h-5 w-5 text-gray-200"
-                                                                viewBox="0 0 20 20"
-                                                                fill="currentColor"
-                                                            >
-                                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                            </svg>
-                                                        </div>
+                                                        <StarRating
+                                                            className="-mb-2"
+                                                            value={rating}
+                                                            editing={false}
+                                                            onStarClick={(
+                                                                nextValue,
+                                                                prevValue,
+                                                                name
+                                                            ) =>
+                                                                handleStarClick(
+                                                                    nextValue,
+                                                                    prevValue,
+                                                                    name
+                                                                )
+                                                            }
+                                                            emptyStarColor={
+                                                                '#e5e7eb'
+                                                            }
+                                                            starColor={
+                                                                '#facc15'
+                                                            }
+                                                        />
 
                                                         <p className="mt-0.5 text-xs text-gray-500">
-                                                            Based on 2 reviews
+                                                            Нийт 2 үнэлгээ
                                                         </p>
                                                     </div>
                                                 </div>
@@ -288,11 +285,24 @@ export default function Detail() {
                                     </div>
                                     {/* </div> */}
                                 </div>
+
                                 {requestSent ? (
                                     requestStatus == 'APPROVED' ? (
-                                        <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
-                                            Хүсэлт баталгаажсан✅
-                                        </button>
+                                        <div className="space-y-4">
+                                            <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
+                                                Хүсэлт баталгаажсан✅
+                                            </button>
+                                            {!ratingMode && (
+                                                <button
+                                                    onClick={() =>
+                                                        setRatingMode(true)
+                                                    }
+                                                    className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0"
+                                                >
+                                                    Үнэлгээ өгөх
+                                                </button>
+                                            )}
+                                        </div>
                                     ) : (
                                         <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4  sm:mb-0">
                                             Хүсэлт явсан
@@ -314,6 +324,32 @@ export default function Detail() {
                                 <button className="btn text-white bg-gray-700 hover:bg-gray-800 w-full mb-4  sm:mb-0">
                                     Холбоо барих
                                 </button>
+                                {ratingMode && (
+                                    <div className="flex gap-2 items-center">
+                                        <StarRating
+                                            value={rating}
+                                            onStarClick={(
+                                                nextValue,
+                                                prevValue,
+                                                name
+                                            ) =>
+                                                handleStarClick(
+                                                    nextValue,
+                                                    prevValue,
+                                                    name
+                                                )
+                                            }
+                                            emptyStarColor={'#e5e7eb'}
+                                            starColor={'#facc15'}
+                                        />
+                                        <button
+                                            onClick={() => handleReview()}
+                                            className="btn-sm text-white bg-purple-600 hover:bg-purple-700  mb-4  sm:mb-0"
+                                        >
+                                            Үнэлгээ өгөх
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

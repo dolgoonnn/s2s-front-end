@@ -28,13 +28,15 @@ export default function Index() {
                     <h4 className="h4 mb-4" data-aos="fade-up">
                         Миний нийтлэсэн сургалтууд
                     </h4>
-                    {myRequests?.teachings?.rows.map((teaching) => (
-                        <AdCard
-                            key={teaching.id}
-                            detail={teaching}
-                            myTeaching={true}
-                        />
-                    ))}
+                    <div className="space-y-8">
+                        {myRequests?.teachings?.rows.map((teaching) => (
+                            <AdCard
+                                key={teaching.id}
+                                detail={teaching}
+                                myTeaching={true}
+                            />
+                        ))}
+                    </div>
                 </section>
             </main>
         </MainLayout>

@@ -95,7 +95,7 @@ export default function Detail() {
                                 direction="vertical"
                                 className=" w-full h-full"
                             >
-                                <Link href={'/jobs'}>
+                                <Link href={'/myTeaching'}>
                                     <div className="mb-4 flex items-center gap-1 text-primary">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"

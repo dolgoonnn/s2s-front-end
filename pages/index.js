@@ -31,10 +31,10 @@ function Home() {
                 {/*  Page sections */}
                 <HeroHome />
                 <Jobs />
-                <FeaturesBlocks />
-                <FeaturesZigZag />
+                {/* <FeaturesBlocks /> */}
+                {/* <FeaturesZigZag />
                 <Testimonials />
-                <Newsletter />
+                <Newsletter /> */}
             </main>
 
             {/*  Site footer */}

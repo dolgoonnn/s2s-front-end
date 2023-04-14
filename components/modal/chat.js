@@ -45,7 +45,7 @@ export default function Chat({ visible, setVisible, id, detail }) {
         socket.emit('chatMessage', {
             senderId: user?.id,
             recieverId: detail?.user?.id,
-            msg: { message },
+            msg: message,
         });
     };
 
